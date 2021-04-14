@@ -32,8 +32,13 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #content {
-  min-height: 100vh;
+  min-height: 750px;
 }
+  #app {
+    background-image: url('~assets/img/bg_image.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 </style>
