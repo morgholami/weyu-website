@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1033px" height="1032px" viewBox="0 0 1033 1032" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>oval linie BG</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="32.1762896%" id="radialGradient-1">
+            <stop stop-color="#120024" offset="0%"></stop>
+            <stop stop-color="#120024" stop-opacity="0.9" offset="41.0446579%"></stop>
+            <stop stop-color="#081F2B" stop-opacity="0" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="website" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="BG-dark" transform="translate(-444.000000, -24.000000)">
+            <g id="oval-linie-BG" transform="translate(440.000000, 19.000000)">
+                <line x1="520.5" y1="5.5" x2="520.5" y2="1036.5" id="Line" stroke="#28F9FF" opacity="0.11" stroke-linecap="square"></line>
+                <line x1="653.921218" y1="23.0652365" x2="387.078782" y2="1018.93476" id="Line" stroke="#28F9FF" opacity="0.11" stroke-linecap="square"></line>
+                <line x1="520.5" y1="5.5" x2="520.5" y2="1036.5" id="Line" stroke="#28F9FF" opacity="0.11" stroke-linecap="square" transform="translate(520.500000, 521.000000) rotate(-330.000000) translate(-520.500000, -521.000000) "></line>
+                <line x1="520.5" y1="5.5" x2="520.5" y2="1036.5" id="Line-Copy" stroke="#28F9FF" opacity="0.11" stroke-linecap="square" transform="translate(520.500000, 521.000000) rotate(-315.000000) translate(-520.500000, -521.000000) "></line>
+                <line x1="520.5" y1="5.5" x2="520.5" y2="1036.5" id="Line-Copy-2" stroke="#28F9FF" opacity="0.11" stroke-linecap="square" transform="translate(520.500000, 521.000000) rotate(-300.000000) translate(-520.500000, -521.000000) "></line>
+                <line x1="520.5" y1="5.5" x2="520.5" y2="1036.5" id="Line-Copy-3" stroke="#28F9FF" opacity="0.11" stroke-linecap="square" transform="translate(520.500000, 521.000000) rotate(-285.000000) translate(-520.500000, -521.000000) "></line>
+                <line x1="520.5" y1="5.5" x2="520.5" y2="1036.5" id="Line-Copy-4" stroke="#28F9FF" opacity="0.11" stroke-linecap="square" transform="translate(520.500000, 521.000000) rotate(-270.000000) translate(-520.500000, -521.000000) "></line>
+                <line x1="520.5" y1="5.5" x2="520.5" y2="1036.5" id="Line-Copy-5" stroke="#28F9FF" opacity="0.11" stroke-linecap="square" transform="translate(520.500000, 521.000000) rotate(-255.000000) translate(-520.500000, -521.000000) "></line>
+                <line x1="520.5" y1="5.5" x2="520.5" y2="1036.5" id="Line-Copy-6" stroke="#28F9FF" opacity="0.11" stroke-linecap="square" transform="translate(520.500000, 521.000000) rotate(-240.000000) translate(-520.500000, -521.000000) "></line>
+                <line x1="520.5" y1="5.5" x2="520.5" y2="1036.5" id="Line-Copy-7" stroke="#28F9FF" opacity="0.11" stroke-linecap="square" transform="translate(520.500000, 521.000000) rotate(-225.000000) translate(-520.500000, -521.000000) "></line>
+                <line x1="520.5" y1="5.5" x2="520.5" y2="1036.5" id="Line-Copy-8" stroke="#28F9FF" opacity="0.11" stroke-linecap="square" transform="translate(520.500000, 521.000000) rotate(-210.000000) translate(-520.500000, -521.000000) "></line>
+                <line x1="653.921218" y1="1018.93476" x2="387.078782" y2="23.0652365" id="Line-Copy-9" stroke="#28F9FF" opacity="0.11" stroke-linecap="square"></line>
+                <circle id="Oval-czarnebg-4" fill="url(#radialGradient-1)" cx="520.5" cy="520.5" r="520.5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
