@@ -24,13 +24,19 @@
             <nuxt-link class="navbar-item" to="/" exact-active-class="is-active">
               Home
             </nuxt-link>
-            <nuxt-link class="navbar-item" to="/token" exact-active-class="is-active">
-              Link
+            <div class="navbar-item is-disabled"  exact-active-class="is-active">
+              <div class="has-tooltip-bottom has-tooltip-arrow" data-tooltip="Coming Soon!">Buy NFTs</div>
+            </div>
+            <div class="navbar-item is-disabled " exact-active-class="is-active">
+              <div class="has-tooltip-bottom has-tooltip-arrow" data-tooltip="Coming Soon!">Sell NFTs</div>
+            </div>
+            <nuxt-link class="navbar-item" to="/invest" exact-active-class="is-active">
+              Invest
             </nuxt-link>
 
             <div class="navbar-item" exact-active-class="is-active">
-              <nuxt-link class="button is-secondary is-outlined"  to="/buy" exact-active-class="is-active">
-                Buy
+              <nuxt-link class="button is-primary is-outlined"  to="/login" exact-active-class="is-active">
+                Connect Wallet
               </nuxt-link>
             </div>
           </div>

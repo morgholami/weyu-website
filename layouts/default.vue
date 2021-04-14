@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav-bar/>
-    <div>
+    <div id="content">
       <Nuxt/>
     </div>
     <foot/>
@@ -33,8 +33,7 @@
 </script>
 
 <style scoped>
-#app {
-  /*background: url('~assets/img/grid.png');*/
+#content {
   min-height: 100vh;
 }
 </style>
