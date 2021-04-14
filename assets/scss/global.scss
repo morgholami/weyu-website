@@ -55,17 +55,16 @@ a.card {
 
     }
   }
-  &.is-white {
-    &.is-outlined {
-      border: 1px solid $white;
-      color: $white;
-      background: none;
-      &::placeholder {
-        color: white;
-        opacity: 0.5;
-      }
+  &.is-transparent {
+    border: 1px solid rgba($primary, 0.5);
+    color: $white;
+    background: rgba($primary, 0.25);
+    &::placeholder {
+      color: white;
+      opacity: 0.3;
     }
   }
+
 }
 .hero-body {
   max-width: 100%;
