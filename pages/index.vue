@@ -18,7 +18,7 @@
       return {
         title: 'Got NFTs?',
         script: [
-          // { src: '...js' }
+          { src: 'https://chimpstatic.com/mcjs-connected/js/users/6ea3bc06a659e723a9cb304b7/fff818abd4f7646db053ddc10.js', async: true }
         ],
         meta: [
           {
