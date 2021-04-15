@@ -29,10 +29,10 @@
     }
     .button-subscribe {
         position: absolute;
-        top: 5px;
+        top: 6px;
         right: 5px;
         .button {
-            padding: 20px 20px;
+          height:40px;
             font-size: 14px;
             min-width: 150px;
         }
