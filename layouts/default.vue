@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{ 'homepage': $route.path == '/', 'light': $route.path == '/login' }">
     <nav-bar/>
     <div id="content">
       <Nuxt/>
@@ -32,13 +32,23 @@
   };
 </script>
 
-<style lang="scss" scoped>
-#content {
-  min-height: 750px;
-}
+<style lang="scss">
+  #content {
+    min-height: 750px;
+  }
   #app {
-    background-image: url('~assets/img/bg_image.jpg');
+    background-image: url('~assets/img/background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    &.homepage {
+      background-image: url('~assets/img/bg_image.jpg');
+    }
+    &.light {
+      background-image: url('~assets/img/bg_light.jpg');
+      color: black;
+      .title, .subtitle {
+        color: black;
+      }
+    }
   }
 </style>

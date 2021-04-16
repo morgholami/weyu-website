@@ -7,7 +7,7 @@
                 </div>
                 <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6ea3bc06a659e723a9cb304b7_670088d08f" tabindex="-1" value=""></div>
                 <div class="control button-subscribe">
-                    <button type="submit" class="button is-accent" name="subscribe" id="mc-embedded-subscribe" :class="{'is-loading': loading}">Sign up</button>
+                    <button type="submit" class="button is-accent" name="subscribe" id="mc-embedded-subscribe">Sign up</button>
                 </div>
             </div>
         </form>

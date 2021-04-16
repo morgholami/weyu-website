@@ -24,10 +24,10 @@ $custom-colors: (
 $text: $grey-light;
 $body-background-color: #210042;
 
-$link: $primary;
-$link-hover: lighten($primary, 20%);
-$link-focus: lighten($primary, 20%);
-$link-active: lighten($primary, 20%);
+//$link: $primary;
+$link-hover: $primary;
+$link-focus: $primary;
+$link-active: $primary;
 
 $title-color: white;
 $subtitle-color: $white-ter;
