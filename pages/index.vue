@@ -118,7 +118,7 @@
         content: "";
         display:block;
         position: absolute;
-        top: -50px;
+        top: -75px;
         opacity: 0.8;
         left: 0px;
         width: 100%;
