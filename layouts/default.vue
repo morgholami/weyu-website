@@ -34,7 +34,7 @@
 
 <style lang="scss">
   #content {
-    min-height: 750px;
+    min-height: 665px;
   }
   #app {
     background-image: url('~assets/img/background.jpg');

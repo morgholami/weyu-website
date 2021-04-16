@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer is-transparent mt-6">
+  <footer class="footer is-transparent mt-5">
     <div class="container">
       <div class="has-text-centered">
         <small class="is-size-7">&copy; {{ new Date().getFullYear() }} <b>WEYU</b></small>
