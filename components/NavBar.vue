@@ -90,6 +90,7 @@
         font-weight: 500;
         padding: 10px 20px;
         text-align: center;
+        color: white;
         &.dapps {
           img {
             max-height: 2.5rem;
@@ -119,6 +120,23 @@
             width: calc(100% - 1.5rem - 15px);
           }
         }
+      }
+    }
+  }
+  .light {
+    .navbar {
+      .navbar-menu {
+        .navbar-item {
+          color: black;
+        }
+      }
+    }
+    .button.is-primary {
+      color: $accent;
+      border-color: $accent;
+      &:hover, &:focus, &:active {
+        background: $accent;
+        border-color: $accent;
       }
     }
   }

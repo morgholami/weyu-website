@@ -89,7 +89,6 @@
       -webkit-transform: scale(1.0);
     }
   }
-
   .oval-lines {
     position: relative;
     &:before {
@@ -110,6 +109,30 @@
       animation-fill-mode: forwards;
     }
 
+  }
+  @media only screen and (max-width: 1280px) {
+    .oval-lines {
+      position: relative;
+      &:before {
+        transform: scale(1.0);
+        content: "";
+        display:block;
+        position: absolute;
+        top: -75px;
+        opacity: 0.8;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background-image: url('~assets/img/oval_lines.svg');
+        background-size: 150%;
+        background-position: top;
+        background-repeat: no-repeat;
+        //animation: none;
+        animation-delay: 0.2s, 1.2s;
+        animation-fill-mode: forwards;
+      }
+
+    }
   }
   .site-title {
     font-size: 80px;
