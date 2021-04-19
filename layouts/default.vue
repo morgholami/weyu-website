@@ -64,27 +64,27 @@
     $pp-ltblue: #1CECF3;
     overflow:hidden;
     $sp-yellow: #DE3AC7;
-    &:before-changing-bg {
-      content: "";
-      position: absolute;
-      width:100%;
-      height:100%;
-      top:0;
-      left: 0;
-      opacity: 0.3;
-      align-items: center;
-      background-image: linear-gradient(to right, $pp-blue,$pp-ltblue,$sp-yellow,$pp-purple,$pp-blue);
-      background-size: 600%;
-      background-position: 0 0;
-      box-shadow: inset 0 0 5em rgba(0,0,0,.5);
-      display: flex;
-      height: 100%;
-      justify-content: center;
-      /* Animation */
-      animation-duration: 20s;
-      animation-iteration-count: infinite;
-      animation-name: gradients;
-    }
+  // &:before-changing-bg {
+  //    content: "";
+  //    position: absolute;
+  //    width:100%;
+  //    height:100%;
+  //    top:0;
+  //    left: 0;
+  //    opacity: 0.3;
+  //    align-items: center;
+  //    background-image: linear-gradient(to right, $pp-blue,$pp-ltblue,$sp-yellow,$pp-purple,$pp-blue);
+  //    background-size: 600%;
+  //    background-position: 0 0;
+  //    box-shadow: inset 0 0 5em rgba(0,0,0,.5);
+  //    display: flex;
+  //    height: 100%;
+  //    justify-content: center;
+  //    /* Animation */
+  //    animation-duration: 20s;
+  //    animation-iteration-count: infinite;
+  //    animation-name: gradients;
+  //  }
     &.homepage:before {
       content: "";
       position: absolute;
