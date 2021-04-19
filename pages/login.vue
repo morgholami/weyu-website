@@ -3,7 +3,7 @@
     <div class="container">
       <nuxt-link to="/" class="has-text-black"><i class="fas fa-chevron-left"></i> Back</nuxt-link>
       <div class="has-text-centered">
-        <h2 class="title is-horizontal-centered has-text-weight-bold" style="width: 500px; max-width: 100%">Choose your Blockchain and connect your wallet</h2>
+        <h2 class="subtitle is-3 is-horizontal-centered has-text-weight-bold" style="width: 500px; max-width: 100%">Choose your Blockchain and connect your wallet</h2>
         <p><a target="_blank" href="https://www.binance.com/en/blog/421499824684901157/How-to-Set-Up-and-Use-Trust-Wallet-for-Binance-Smart-Chain">What is a wallet?</a> </p>
       </div>
       <div class="columns">
@@ -164,7 +164,7 @@
           </div>
           <div @click="connectWallet('metamask')" class="has-radius has-background-white has-shadow my-4 p-2 connect-wallet">
             <div class="is-flex is-justify-content-space-between is-align-items-center">
-              <img  style="width: auto; height: 35px;" />
+              <img src="~assets/img/wallet/sollet.svg"  style="width: auto; height: 35px;" />
               <div>
                 <p>Sollet</p>
               </div>
@@ -172,7 +172,7 @@
           </div>
           <div class="has-radius has-background-white has-shadow my-4 p-2 is-disabled has-tooltip-arrow" data-tooltip="Coming Soon!">
             <div class="is-flex is-justify-content-space-between is-align-items-center">
-              <img src="~assets/img/wallet/bonfida.png" style="width: auto; height: 35px;" />
+              <img src="~assets/img/wallet/bonfida.svg" style="width: auto; height: 35px;" />
               <div>
                 <p>Bonfida</p>
               </div>
@@ -227,7 +227,7 @@
 export default {
   methods: {
     connectWallet (wallet) {
-    alert(wallet + ' launching soon!')
+    console.log(wallet + ' launching soon!')
     }
   }
 }

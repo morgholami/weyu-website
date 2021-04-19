@@ -4,14 +4,15 @@
 <!--      <img src="~assets/img/nft-colors.png"  width="1000" class="is-hidden-mobile"/>-->
 <!--    </div>-->
     <div class="container ">
-      <div class="columns">
-        <div class=" column is-one-third mt-6 oval-lines">
+      <div class="has-text-centered">
+        <div class="is-horizontal-centered column is-one-third mt-4 oval-lines">
           <div style="position: relative;">
-            <h2 class="title has-text-weight-bold site-title is-spaced">Got NFTs?</h2>
-            <h4 class="subtitle is-4">The first multi-chain platform for the NFT resell market</h4>
-            <p class="block">
-              Our obsessive compulsive focus is user experience. WEYU is building the easiest and most accessible platform for buying and selling any NFT from any Blockchain.
-            </p>
+            <img src="~assets/img/logo.svg" width="150"/>
+            <h2 class="title site-title is-spaced mt-6">Got NFTs?</h2>
+            <h4 class="subtitle is-4 mb-6">The first multi-chain platform for the NFT resell market</h4>
+<!--            <p class="block">-->
+<!--              Our obsessive compulsive focus is user experience. WEYU is building the easiest and most accessible platform for buying and selling any NFT from any Blockchain.-->
+<!--            </p>-->
             <mailchimp class="block" />
             <div class="columns mt-6 block">
               <div class="column is-half">
@@ -98,9 +99,9 @@
       position: absolute;
       top:-45%;
       opacity: 0.8;
-      left:-45%;
-      width:190%;
-      height:190%;
+      left:-35%;
+      width:170%;
+      height:170%;
       background-image: url('~assets/img/oval_lines.svg');
       background-size: cover;
       background-position: center;
@@ -135,6 +136,7 @@
     }
   }
   .site-title {
-    font-size: 80px;
+    font-size: 63px;
+      font-weight: 500 !important;
   }
 </style>

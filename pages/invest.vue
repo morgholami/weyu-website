@@ -2,7 +2,7 @@
   <section class="section">
     <div class="container">
       <div class="has-text-centered">
-        <h2 class="subtitle  has-text-weight-bold is-3 has-text-success">Thanks for subscribing!</h2>
+        <h2 class="subtitle is-2">Whitelist opening soon!</h2>
         <nuxt-link class="button" to="/">Home</nuxt-link>
       </div>
     </div>

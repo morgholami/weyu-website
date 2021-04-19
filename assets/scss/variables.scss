@@ -3,16 +3,16 @@
 @import '~bulma/sass/utilities/functions';
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap');
+@import url('https://use.typekit.net/smr8yaj.css');
 
 $family-sans-serif: 'Inter', sans-serif;
-$family-secondary: 'Jura', sans-serif;
+$family-secondary: eurostile-extended,sans-serif;
 
 // Colors
 $primary: #1CECF3;
 $secondary: #DE3AC7;
 $secondary-invert: findColorInvert($secondary) !default;
-$accent: #FF0031;
+$accent: #DF007E;
 $accent-invert: findColorInvert($accent) !default;
 $yellow-light: #FFFDF7;
 
