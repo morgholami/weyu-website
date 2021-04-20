@@ -137,6 +137,7 @@
       &:hover, &:focus, &:active {
         background: $accent;
         border-color: $accent;
+        color: white;
       }
     }
   }
