@@ -24,6 +24,9 @@
             <nuxt-link class="navbar-item" to="/" exact-active-class="is-active">
               <div class="has-tooltip-bottom has-tooltip-arrow" data-tooltip="Coming Soon!">Platform</div>
             </nuxt-link>
+            <nuxt-link class="navbar-item" to="/whitepaper" exact-active-class="is-active">
+              <div>Whitepaper</div>
+            </nuxt-link>
             <div class="navbar-item is-disabled"  exact-active-class="is-active">
               <div class="has-tooltip-bottom has-tooltip-arrow" data-tooltip="Coming Soon!">Buy NFTs</div>
             </div>
