@@ -9,7 +9,7 @@
           <div style="position: relative;">
             <img src="~assets/img/logo.svg" width="150"/>
             <h2 class="title site-title is-spaced mt-6">Got NFTs?</h2>
-            <h4 class="subtitle is-4 mb-6">The first multi-chain platform for the NFT resell market</h4>
+            <h4 class="subtitle is-4 mb-6">The first multi-chain platform for the NFT resale market</h4>
 <!--            <p class="block">-->
 <!--              Our obsessive compulsive focus is user experience. WEYU is building the easiest and most accessible platform for buying and selling any NFT from any Blockchain.-->
 <!--            </p>-->
