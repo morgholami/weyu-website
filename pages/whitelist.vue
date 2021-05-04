@@ -5,7 +5,7 @@
           <div class="has-text-centered" style="margin-left: auto; margin-right: auto; max-width: 700px;">
             <p class="subtitle is-5 block">The <b>WEYU Whitelist</b> is now live for the WEYU Open Private Sale.<br>Register now to secure your spot in the sale.</p>
             <p class="has-text-danger"><b>BEWARE OF SCAMMERS</b></p>
-            <p>We will not ask to transfer funds or ask you to share anymore information until we publically announce the official opening of the WEYU token sale.</p>
+            <p>We will not ask to transfer funds or ask you to share anymore information until we publicly announce the official opening of the WEYU token sale.</p>
             <br>
           </div>
           <div ref="typeform" id="typeform">loading..</div>
