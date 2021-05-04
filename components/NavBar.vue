@@ -33,8 +33,8 @@
             <div class="navbar-item is-disabled " exact-active-class="is-active">
               <div class="has-tooltip-bottom has-tooltip-arrow" data-tooltip="Coming Soon!">Sell NFTs</div>
             </div>
-            <nuxt-link class="navbar-item" to="/invest" exact-active-class="is-active">
-              Invest
+            <nuxt-link class="navbar-item" to="/whitelist" exact-active-class="is-active">
+              Whitelist
             </nuxt-link>
 
             <div class="navbar-item" exact-active-class="is-active">
