@@ -44,7 +44,11 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // Doc: https://color-mode.nuxtjs.org/
+    '@nuxtjs/google-analytics'
   ],
+  googleAnalytics: {
+    id: 'UA-196576709-1'
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
