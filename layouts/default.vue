@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="{ 'homepage': $route.path == '/', 'light': $route.path == '/login' || $route.path == '/whitepaper' || $route.path == '/invest'  || $route.path == '/whitelist' }">
+  <div id="app" :class="{ 'homepage': $route.path == '/', 'light': $route.path.includes('login') || $route.path.includes('whitepaper') || $route.path.includes('invest')  || $route.path.includes('whitelist') }">
     <nav-bar/>
     <div id="content">
       <Nuxt/>
