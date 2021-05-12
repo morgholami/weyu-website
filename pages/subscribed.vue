@@ -8,3 +8,12 @@
     </div>
   </section>
 </template>
+<script>
+export default {
+  mounted () {
+    if (process.browser) {
+      this.$gtag('event', 'conversion', {'send_to': 'AW-371706538/UvosCO2nrJICEKqVn7EB'})
+    }
+  }
+}
+</script>

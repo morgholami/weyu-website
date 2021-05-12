@@ -44,7 +44,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // Doc: https://color-mode.nuxtjs.org/
-    '@nuxtjs/google-analytics'
+    // '@nuxtjs/google-analytics'
   ],
   googleAnalytics: {
     id: 'UA-196576709-1'
@@ -52,11 +52,26 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/google-gtag',
     '@nuxtjs/svg',
     ['@nuxtjs/google-adsense', {
       id: 'ca-pub-5583403222445318'
     }]
   ],
+  'google-gtag': {
+    id: 'UA-196576709-1',
+    config: {
+
+    },
+    debug: true, // enable to track in dev mode
+    disableAutoPageTrack: false, // disable if you don't want to track each page route with router.afterEach(...).
+    additionalAccounts: [{
+      id: 'AW-371706538', // required if you are adding additional accounts
+      config: {
+        //send_page_view: false // optional configurations
+      }
+    }]
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
