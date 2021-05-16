@@ -18,8 +18,8 @@
               <div class="column is-half">
                 <div class="px-2 py-4 has-radius has-background-black-transparent has-text-centered">
                   <h2 class="is-size-7 mb-2">Follow our updates on:</h2>
-                  <a href="https://twitter.com/weyu_io" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-twitter"></i></a>
-                  <a href="https://www.instagram.com/weyu_official/" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-instagram"></i></a>
+                  <a href="https://twitter.com/weyuofficial" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-twitter"></i></a>
+                  <a href="https://instagram.com/weyuofficial" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-instagram"></i></a>
                   <a href="https://t.me/weyuofficial" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-telegram"></i></a>
                   <a href="https://github.com/weyuio" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-github"></i></a>
                 </div>
