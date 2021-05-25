@@ -26,9 +26,9 @@
                 <div>Home</div>
               </nuxt-link>
             </div>
-            <nuxt-link class="navbar-item is-disabled" to="/platform" exact-active-class="is-active">
+            <div class="navbar-item is-disabled" to="/platform" exact-active-class="is-active">
               <div class="has-tooltip-bottom has-tooltip-arrow" data-tooltip="Coming Soon!">Platform</div>
-            </nuxt-link>
+            </div>
             <div @click="mobileMenu = false">
               <nuxt-link class="navbar-item" to="/whitepaper" exact-active-class="is-active">
                 <div>Whitepaper</div>
@@ -41,9 +41,9 @@
               <div class="has-tooltip-bottom has-tooltip-arrow" data-tooltip="Coming Soon!">Sell NFTs</div>
             </div>
             <div @click="mobileMenu = false" >
-              <nuxt-link class="navbar-item is-disabled" to="/whitelist" exact-active-class="is-active">
+              <div class="navbar-item is-disabled" to="/whitelist" exact-active-class="is-active">
                 <div class="has-tooltip-bottom has-tooltip-arrow" data-tooltip="Coming Soon!">Whitelist & Airdrop</div>
-              </nuxt-link>
+              </div>
             </div>
             <div class="navbar-item" exact-active-class="is-active" @click="mobileMenu = false">
               <nuxt-link class="button is-primary is-outlined"  to="/login" exact-active-class="is-active">
