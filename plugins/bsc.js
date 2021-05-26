@@ -38,8 +38,7 @@ export default (context, inject) => {
         binance: window.BinanceChain || null,
         walletConnect: walletProvider || null, //connect to mobile wallet; trust, metamask, ...
         walletConnected: null, // Does it make sense to do this at the beginning?
-        currentProvider: null,
-        token: null
+        currentProvider: null
       }
     },
     created() {

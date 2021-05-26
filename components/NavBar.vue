@@ -67,7 +67,6 @@
         </div>
       </div>
     </nav>
-    token:{{$bsc.token}}
   </div>
 </template>
 
@@ -92,12 +91,13 @@
       async login () {
         const timestamp = Math.floor(+new Date() / 1000)
         const signature = await this.$bsc.sign(timestamp)
-        const response = await this.$axios.post(process.env.NUXT_ENV_BACKEND_URL + '/login', {
+        const response = await this.$axios.post('/login', {
           address: this.bscWallet[0],
           signature: signature,
           timestamp: timestamp
         })
-        this.$bsc.token = response.data.token
+        this.$axios.setToken(response.data.token, 'Bearer')
+        const response2 = await this.$axios.get('/user')
       }
     }
   }
