@@ -46,14 +46,28 @@
               </div>
             </div>
             <div class="navbar-item" exact-active-class="is-active" @click="mobileMenu = false">
-              <nuxt-link class="button is-primary is-outlined"  to="/login" exact-active-class="is-active">
-                Connect Wallet
-              </nuxt-link>
+              <div v-if="!bscWallet">
+                <div class="button is-primary is-outlined"  @click="$bsc.loginModal = true" exact-active-class="is-active">
+                  Connect Wallet
+                </div>
+              </div>
+              <div v-else style="max-width: 150px">
+                <a :href="$bsc.explorer + '/address/'+ bscWallet[0]" target="_blank"
+                   class="blockchain-address">{{ bscWallet[0] }}</a>
+                <a class="has-text-danger" @click="$bsc.logout()">
+                  <small class="is-size-7">Disconnect</small>
+                </a>
+                <a class="" @click="login">
+                  <small class="is-size-7">Login</small>
+                </a>
+                sign
+              </div>
             </div>
           </div>
         </div>
       </div>
     </nav>
+    token:{{$bsc.token}}
   </div>
 </template>
 
@@ -69,6 +83,22 @@
     },
 
     computed: {
+      bscWallet () {
+        return (this.$bsc) ? this.$bsc.wallet : null
+      }
+    },
+
+    methods: {
+      async login () {
+        const timestamp = Math.floor(+new Date() / 1000)
+        const signature = await this.$bsc.sign(timestamp)
+        const response = await this.$axios.post(process.env.NUXT_ENV_BACKEND_URL + '/login', {
+          address: this.bscWallet[0],
+          signature: signature,
+          timestamp: timestamp
+        })
+        this.$bsc.token = response.data.token
+      }
     }
   }
 </script>

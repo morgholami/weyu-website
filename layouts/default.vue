@@ -1,6 +1,7 @@
 <template>
   <div id="app" :class="{ 'homepage': $route.path == '/', 'light': $route.path.includes('login') || $route.path.includes('whitepaper') || $route.path.includes('invest')  || $route.path.includes('whitelist') }">
     <nav-bar/>
+    <bsc-wallet />
     <div id="content">
       <Nuxt/>
     </div>
@@ -11,12 +12,14 @@
 <script>
   import NavBar from '@/components/NavBar';
   import Foot from '@/components/Footer';
+  import BscWallet from '@/components/BscWallet';
 
 
   export default {
     components: {
       NavBar,
-      Foot
+      Foot,
+      BscWallet
     },
 
     data () {
