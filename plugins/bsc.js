@@ -64,11 +64,22 @@ export default (context, inject) => {
           }
         }
         this.clear()
-
-
+        console.log(context)
+        context.app.router.push("/")
+        this.token = null
+        context.$axios.setToken(false)
       },
       async switch() {
-        await this.logout()
+        if (this.currentProvider) {
+          if(this.currentProvider == this.walletConnect) {
+            // This method is only available for WalletConnect
+            await this.walletConnect.disconnect()
+            this.wallet = null
+          } else {
+            this.wallet = null
+          }
+        }
+        this.clear()
         this.loginModal = true
       },
 
@@ -241,18 +252,14 @@ export default (context, inject) => {
       },
 
       async sign(message) {
-        try {
-          const signature = await this.currentProvider.request({
-            method: 'personal_sign',
-            params: [
-              "weyu_"+message,
-              this.wallet[0]
-            ]
-          })
-          return signature
-        } catch (error) {
-          console.error(error)
-        }
+        const signature = await this.currentProvider.request({
+          method: 'personal_sign',
+          params: [
+            "weyu_"+message,
+            this.wallet[0]
+          ]
+        })
+        return signature
       },
 
       async onCorrectChain(){

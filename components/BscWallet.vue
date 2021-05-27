@@ -1,7 +1,7 @@
 <template>
   <span>
     <div class="modal" :class="{ 'is-active': $bsc.loginModal }">
-      <div class="modal-background" @click="$bsc.loginModal = false"></div>
+      <div class="modal-background" @click="$bsc.loginModal = false;error = null"></div>
       <div class="modal-card">
         <div v-if="error" class="notification is-danger">
           <button class="delete" @click="error = null"/>
@@ -13,7 +13,7 @@
             <span v-else-if="bscWallet">Verify your address</span>
             <span v-else>Select your BSC wallet</span>
           </p>
-          <button class="delete" aria-label="close" @click="$bsc.loginModal = false"/>
+          <button class="delete" aria-label="close" @click="$bsc.loginModal = false;error = null"/>
         </header>
         <section class="modal-card-body">
           <div v-if="loading" class="loader-wrapper is-active">
@@ -25,7 +25,7 @@
               <b class="has-text-black">Selected account</b>
               <a :href="$bsc.explorer + '/address/'+ bscWallet[0]" target="_blank"
                  class="blockchain-address">{{ bscWallet[0] }}</a>
-               <a class="has-text-danger" @click="$bsc.switch()">
+               <a class="has-text-danger" @click="$bsc.switch();error = null">
                   <small class="is-size-7">Switch Wallet</small>
                 </a>
               </div>
@@ -115,19 +115,33 @@ export default {
 
   methods: {
     async login() {
-      const timestamp = Math.floor(+new Date() / 1000)
-      const signature = await this.$bsc.sign(timestamp)
-      const response = await this.$axios.post('/login', {
-        address: this.bscWallet[0],
-        signature: signature,
-        timestamp: timestamp,
-        referrer: this.$route.query.ref
-      })
-      this.$bsc.token = response.data.token
-      this.$axios.setToken(response.data.token, 'Bearer')
-      // const response2 = await this.$axios.get('/user')
-      this.$bsc.loginModal = false
-      this.$router.push("/account")
+      try {
+        const timestamp = Math.floor(+new Date() / 1000)
+        const signature = await this.$bsc.sign(timestamp)
+        const response = await this.$axios.post('/login', {
+          address: this.bscWallet[0],
+          signature: signature,
+          timestamp: timestamp,
+          referrer: this.$route.query.ref
+        })
+        this.$bsc.token = response.data.token
+        this.$axios.setToken(response.data.token, 'Bearer')
+        this.$bsc.loginModal = false
+        this.error = null
+        this.$router.push("/account")
+      } catch (error) {
+        if (error.response && error.response.data) {
+          if(error.response.data.error) {
+            this.error = error.response.data.error
+          } else {
+            this.error = error.response.data
+          }
+        } else if (error.message) {
+          this.error = error.message
+        } else {
+          this.error = error
+        }
+      }
     },
     async selectWallet(provider) {
       this.loading = true
@@ -146,6 +160,7 @@ export default {
             alert('Trust wallet coming soon')
             break
         }
+        this.error = null
       } catch (error) {
         this.error = error
       }
