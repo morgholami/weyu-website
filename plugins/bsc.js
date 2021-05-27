@@ -38,7 +38,8 @@ export default (context, inject) => {
         binance: window.BinanceChain || null,
         walletConnect: walletProvider || null, //connect to mobile wallet; trust, metamask, ...
         walletConnected: null, // Does it make sense to do this at the beginning?
-        currentProvider: null
+        currentProvider: null,
+        token: null
       }
     },
     created() {
@@ -58,13 +59,17 @@ export default (context, inject) => {
             // This method is only available for WalletConnect
             await this.walletConnect.disconnect()
             this.wallet = null
-            window.location.reload()
           } else {
             this.wallet = null
           }
         }
         this.clear()
 
+
+      },
+      async switch() {
+        await this.logout()
+        this.loginModal = true
       },
 
       updateAccount() {
