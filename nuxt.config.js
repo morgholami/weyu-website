@@ -11,6 +11,8 @@ export default {
     fallback: true
   },
 
+  router: { middleware: ['referral'] },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - Weyu',

@@ -94,7 +94,8 @@
         const response = await this.$axios.post('/login', {
           address: this.bscWallet[0],
           signature: signature,
-          timestamp: timestamp
+          timestamp: timestamp,
+          referrer: this.$route.query.ref
         })
         this.$axios.setToken(response.data.token, 'Bearer')
         const response2 = await this.$axios.get('/user')
