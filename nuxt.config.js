@@ -1,6 +1,9 @@
 // eslint-disable-next-line nuxt/no-cjs-in-config
 require('./config.js')
 
+import path from 'path'
+import fs from 'fs'
+
 export default {
   ssr: false,
 
@@ -79,6 +82,14 @@ export default {
         //send_page_view: false // optional configurations
       }
     }]
+  },
+
+  server: {
+    port: 443,
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

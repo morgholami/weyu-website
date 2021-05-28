@@ -28,7 +28,7 @@
         </div>
         <vue-telegram-login
             mode="callback"
-            telegram-login="YourTelegramBot"
+            telegram-login="weyu_bot"
             requestAccess="write"
             @callback="telegramLogin" />
         <div>
@@ -74,8 +74,16 @@ import {vueTelegramLogin} from 'vue-telegram-login'
       }
     },
     methods: {
-      telegramLogin (user) {
+      async telegramLogin (user) {
         console.log(user)
+        this.loading = true
+        try {
+          const response = await this.$axios.post('/user/telegram', user)
+          this.user = response.data;
+        } catch (e) {
+          alert("Could not set telegram account")
+        }
+        this.loading = false
       },
       async setEmail() {
         this.loading = true
