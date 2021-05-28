@@ -5,31 +5,29 @@
 <!--    </div>-->
     <div class="container ">
       <div class="has-text-centered">
-        <div class="is-horizontal-centered column is-one-third mt-4 oval-lines">
+        <div class="is-horizontal-centered column is-three-quarters">
           <div style="position: relative;">
-            <img src="~assets/img/logo.svg" width="150"/>
             <h2 class="title site-title is-spaced mt-6">Got NFTs?</h2>
-            <h4 class="subtitle is-4 mb-6">The first multi-chain platform for the NFT resale market</h4>
+            <h4 class="subtitle is-6 mb-6">The first multi-chain platform for the NFT resale market</h4>
 <!--            <p class="block">-->
 <!--              Our obsessive compulsive focus is user experience. WEYU is building the easiest and most accessible platform for buying and selling any NFT from any Blockchain.-->
 <!--            </p>-->
-            <mailchimp class="block" />
-            <div class="columns mt-6 block">
-              <div class="column is-half">
-                <div class="px-2 py-4 has-radius has-background-black-transparent has-text-centered">
-                  <h2 class="is-size-7 mb-2">Follow our updates on:</h2>
+            <home-connect class="block" />
+            <div class="columns block">
+              <div class="column is-whole">
+                <div class="px-2 has-radius has-text-centered">
                   <a href="https://twitter.com/weyuofficial" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-twitter"></i></a>
                   <a href="https://instagram.com/weyuofficial" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-instagram"></i></a>
                   <a href="https://t.me/weyuofficial" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-telegram"></i></a>
                   <a href="https://github.com/weyuio" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-github"></i></a>
                 </div>
               </div>
-              <div class="column is-half">
+              <!-- <div class="column is-half">
                 <div class="px-2 py-4 has-radius has-background-black-transparent has-text-centered">
                   <h2 class="is-size-7 mb-2">Contact us:</h2>
                   <a href="mailto:team@weyu.io" target="_blank" class="subtitle is-5">team@weyu.io</a>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -42,6 +40,7 @@
 
 <script>
   import Mailchimp from '@/components/Mailchimp';
+import HomeConnect from '../components/HomeConnect.vue';
 
   export default {
     head() {
@@ -60,7 +59,7 @@
       }
     },
     components: {
-      Mailchimp
+      HomeConnect
     }
   }
 </script>

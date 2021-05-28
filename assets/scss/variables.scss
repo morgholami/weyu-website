@@ -16,6 +16,10 @@ $accent: #DF007E;
 $accent-invert: findColorInvert($accent) !default;
 $yellow-light: #FFFDF7;
 
+$primary-gradient: rgba(28,236,243, 0.70);
+$secondary-gradient: rgba(222,58,199,0.70);
+$gradient-bg: #200142; 
+
 $custom-colors: (
   "secondary":($secondary, $secondary-invert),
   "accent":($accent, $accent-invert),
