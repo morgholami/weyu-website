@@ -41,7 +41,7 @@
           <!-- Account Action Blocks -->
           <account-action-blocks :user="user"/>
 
-          <div class="has-text-centered">
+          <div class="has-text-centered mb-4">
             <a class="button is-danger" @click="$bsc.logout()">
               Logout
             </a>
