@@ -2,8 +2,9 @@
     <div class="account-action-blocks mb-6 has-radius is-horizontal-centered">
       <div class="columns">
         <div class="is-half column">
+
           <!-- Refer block -->
-          <div class="account-action-block px-6 pt-5 pb-5 has-radius is-flex-direction-column	is-justify-content-space-between">
+          <div class="account-action-block px-6 py-5 has-radius is-flex-direction-column is-justify-content-space-between is-flex">
             <h3 class="mb-3 px-2 pt-2 has-text-weight-medium">Refer friends for extra tickets</h3>
             <p>Use your unique link below to refer your friend. You earn <span class="has-text-secondary">2x tickets</span> for everyone who registers through your link.</p>
             <div class="field has-addons mt-5">
@@ -40,10 +41,10 @@
 
         <!-- Task block -->
         <div class="is-half column">
-          <div class="account-action-block task-block px-5 pt-5 pb-5 has-radius">
+          <div class="account-action-block task-block px-5 py-5 has-radius">
             <h3 class="mb-3 pt-2 px-2 has-text-weight-medium">Do a task for extra tickets</h3>
             <p>All tasks will be verified before the $WEYU airdrop is distributed.</p>
-            <div class="columns my-5">
+            <div class="columns mt-5">
               <div class="column is-one-third">
                 <div class="task has-radius p-2">
                   <img src="~assets/img/ticket.svg" class="my-3" />
