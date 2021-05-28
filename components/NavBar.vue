@@ -47,12 +47,12 @@
             </div>
             <div class="navbar-item" exact-active-class="is-active" @click="mobileMenu = false">
               <div v-if="!loggedIn">
-                <div class="button is-primary is-outlined"  @click="$bsc.loginModal = true" exact-active-class="is-active">
+                <div class="button is-primary is-outlined px-5"  @click="$bsc.loginModal = true" exact-active-class="is-active">
                   Connect Wallet
                 </div>
               </div>
               <div v-else>
-                <nuxt-link class="button is-accent" to="/account" exact-active-class="is-active">
+                <nuxt-link class="button is-accent px-5" to="/account" exact-active-class="is-active">
                   <div>My Account</div>
                 </nuxt-link>
               </div>
@@ -111,6 +111,7 @@
         padding: 10px 20px;
         text-align: center;
         color: white;
+        font-size: .9rem;
         &.dapps {
           img {
             max-height: 2.5rem;

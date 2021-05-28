@@ -3,7 +3,7 @@
 <!--    <div style="position: absolute; top:90px; right:0; overflow:hidden;max-height:800px;">-->
 <!--      <img src="~assets/img/nft-colors.png"  width="1000" class="is-hidden-mobile"/>-->
 <!--    </div>-->
-    <div class="container ">
+    <div class="container">
       <div class="has-text-centered">
         <div class="is-horizontal-centered column is-three-quarters">
           <div style="position: relative;">
@@ -12,35 +12,20 @@
 <!--            <p class="block">-->
 <!--              Our obsessive compulsive focus is user experience. WEYU is building the easiest and most accessible platform for buying and selling any NFT from any Blockchain.-->
 <!--            </p>-->
+
+            <!-- Connect Block -->
             <home-connect class="block" />
-            <div class="columns block">
-              <div class="column is-whole">
-                <div class="px-2 has-radius has-text-centered">
-                  <a href="https://twitter.com/weyuofficial" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-twitter"></i></a>
-                  <a href="https://instagram.com/weyuofficial" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-instagram"></i></a>
-                  <a href="https://t.me/weyuofficial" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-telegram"></i></a>
-                  <a href="https://github.com/weyuio" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-github"></i></a>
-                </div>
-              </div>
-              <!-- <div class="column is-half">
-                <div class="px-2 py-4 has-radius has-background-black-transparent has-text-centered">
-                  <h2 class="is-size-7 mb-2">Contact us:</h2>
-                  <a href="mailto:team@weyu.io" target="_blank" class="subtitle is-5">team@weyu.io</a>
-                </div>
-              </div> -->
-            </div>
           </div>
         </div>
-
       </div>
     </div>
-
+    <weyu-footer />
   </section>
 </template>
 
 <script>
-  import Mailchimp from '@/components/Mailchimp';
-import HomeConnect from '../components/HomeConnect.vue';
+  import HomeConnect from '@/components/HomeConnect.vue';
+  import WeyuFooter from '@/components/Footer.vue';
 
   export default {
     head() {
@@ -59,7 +44,8 @@ import HomeConnect from '../components/HomeConnect.vue';
       }
     },
     components: {
-      HomeConnect
+      HomeConnect,
+      WeyuFooter
     }
   }
 </script>
