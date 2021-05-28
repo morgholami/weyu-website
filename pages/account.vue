@@ -6,30 +6,30 @@
         <div v-if="user">
 
           <!-- Account Status Bar -->
-          <p>Congrats, you are registered!</p>
+          <p class="has-text-white">Congrats {{user.telegram_meta.first_name}} you are registered!</p>
           <account-status :user="user"/>
           
-          <div v-if="user.email && !editEmail">
+          <div v-if="user.email && !editEmail" class="mt-6">
             {{user.email}} <a @click="email = user.email; editEmail = true">edit</a>
           </div>
           <div v-else>
-            <form @submit.prevent="setEmail">
-              <div class="field has-addons">
+            <form @submit.prevent="setEmail" class="mt-6">
+               <div class="field has-addons">
                 <div class="control">
                   <input type="email" required v-model="email" class="input" placeholder="Your email" />
                 </div>
-                <div class="control is-flex is-align-items-center">
+                <p class="control">
                   <button type="submit" class="button is-primary" :disabled="!email">
                     Set email
                   </button>
                   <a v-if="editEmail" @click="editEmail = false" class="ml-2">cancel</a>
-                </div>
-              </div>
+                </p>
+              </div>             
             </form>
           </div>
-          <div v-if="user.telegram">
+          <!-- <div v-if="user.telegram">
             {{user.telegram}}
-          </div>
+          </div> -->
           <vue-telegram-login
               mode="callback"
               telegram-login="weyu_bot"

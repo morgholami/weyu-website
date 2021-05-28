@@ -68,7 +68,7 @@
               <div class="column is-one-third">
                 <div class="task has-radius p-2">
                   <img src="~assets/img/ticket.svg" class="my-3" />
-                  <p  class="has-text-secondary has-text-weight-bold">1x Ticket</p>
+                  <p class="has-text-secondary has-text-weight-bold">1x Ticket</p>
                   <p>50 Claps for Medium blog</p>
                   <button class="button has-text-weight-medium is-outlined is-secondary is-link mt-4">
                     50 claps

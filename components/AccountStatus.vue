@@ -5,14 +5,10 @@
         <!-- Address -->
         <div class="is-one-third column px-6">
           <div>
-            <div v-if="user.address" class="is-flex is-flex-direction-column is-justify-content-space-between">
-              <i class="far fa-check-circle has-text-primary mb-2"></i>
-              <a :href="$bsc.explorer + '/address/'+ user.address" target="_blank" >{{ user.address }}</a>
-              <p class="has-text-primary has-text-weight-medium">Verified</p>
-            </div>
-            <div v-else class="is-flex is-flex-direction-column is-justify-content-space-between">
-              <i class="far fa-times-circle has-text-secondary mb-2"></i>
-              <p class="has-text-secondary has-text-weight-medium">Not connected</p>
+            <div class="is-flex is-flex-direction-column is-justify-content-space-between">
+              <i :class="[user.address ? 'fa-check-circle' : 'fa-times-circle', 'far', 'has-text-primary', 'mb-2']"></i>
+              <a class="has-text-white" :href="$bsc.explorer + '/address/'+ user.address" target="_blank" >{{ user.address ? user.address : '' }}</a>
+              <p class="has-text-primary has-text-weight-medium">{{ user.address ? 'Verified' : ' Not verified' }}</p>
             </div>
           </div>
         </div>
@@ -20,14 +16,10 @@
         <!-- Username -->
         <div class="is-one-third column px-6">
           <div>
-            <div v-if="user.name" class="is-flex is-flex-direction-column is-justify-content-space-between">
-              <i class="far fa-check-circle has-text-primary mb-2"></i>
-              <p>@{{ user.name }}</p>
-              <p class="has-text-primary has-text-weight-medium">Connected</p>
-            </div>
-            <div v-else class="is-flex is-flex-direction-column is-justify-content-space-between">
-              <i class="far fa-times-circle has-text-secondary mb-2"></i>
-              <p class="has-text-secondary has-text-weight-medium">Not connected</p>
+            <div class="is-flex is-flex-direction-column is-justify-content-space-between">
+              <i :class="[user.telegram_meta.username ? 'fa-check-circle' : 'fa-times-circle', 'far', 'has-text-primary', 'mb-2']"></i>
+              <p class="has-text-white">{{ user.telegram_meta.username ? user.telegram_meta.username : '' }}</p>
+              <p :class="[user.telegram_meta.username ? 'has-text-primary' : 'has-text-secondary', 'has-text-weight-medium']">{{ user.telegram_meta.username ? 'Connected' : ' Not connected' }}</p>
             </div>
           </div>
         </div>
@@ -35,14 +27,10 @@
         <!-- Email -->
         <div class="is-one-third column px-6">
           <div>
-            <div v-if="user.email" class="is-flex is-flex-direction-column is-justify-content-space-between">
-              <i class="far fa-times-circle has-text-primary mb-2"></i>
-              <a :href="$bsc.explorer + '/address/'+ user.address" target="_blank" >{{ user.email }}</a>
-              <p class="has-text-primary has-text-weight-medium">Connected</p>
-            </div>
-            <div v-else class="is-flex is-flex-direction-column is-justify-content-space-between">
-              <i class="far fa-times-circle has-text-secondary mb-2"></i>
-              <p class="has-text-secondary has-text-weight-medium">Not connected</p>
+            <div class="is-flex is-flex-direction-column is-justify-content-space-between">
+              <i :class="[user.email ? 'fa-check-circle' : 'fa-times-circle', 'far', 'has-text-primary', 'mb-2']"></i>
+              <p class="has-text-white">{{ user.email ? user.email : '' }}</p>
+              <p :class="[user.email ? 'has-text-primary' : 'has-text-secondary', 'has-text-weight-medium']">{{ user.email ? 'Connected' : ' Not connected' }}</p>
             </div>
           </div>
         </div>
