@@ -1,5 +1,6 @@
 <template>
   <section class="section">
+    <error-modal />
     <div class="container ">
       <div v-if="loading">Loading..</div>
       <div v-if="user">
@@ -50,16 +51,22 @@
 
 <script>
 import {vueTelegramLogin} from 'vue-telegram-login'
+
+import ErrorModal from '@/components/ErrorModal'
   export default {
     computed: {
       loggedIn () {
         return (this.$bsc && this.$bsc.token)
       }
     },
-    components: {vueTelegramLogin},
+    components: {
+      vueTelegramLogin,
+      ErrorModal
+    },
     data() {
       return {
         loading: false,
+        error: null,
         user: null,
         email: null,
         editEmail: false
@@ -80,8 +87,18 @@ import {vueTelegramLogin} from 'vue-telegram-login'
         try {
           const response = await this.$axios.post('/user/telegram', user)
           this.user = response.data;
-        } catch (e) {
-          alert("Could not set telegram account")
+        } catch (error) {
+          if (error.response && error.response.data) {
+            if(error.response.data.error) {
+              this.error = error.response.data.error
+            } else {
+              this.error = error.response.data
+            }
+          } else if (error.message) {
+            this.error = error.message
+          } else {
+            this.error = error
+          }
         }
         this.loading = false
       },
@@ -92,8 +109,18 @@ import {vueTelegramLogin} from 'vue-telegram-login'
             email: this.email
           })
           this.user = response.data;
-        } catch (e) {
-          alert("Could not update account")
+        } catch (error) {
+          if (error.response && error.response.data) {
+            if(error.response.data.error) {
+              this.error = error.response.data.error
+            } else {
+              this.error = error.response.data
+            }
+          } else if (error.message) {
+            this.error = error.message
+          } else {
+            this.error = error
+          }
         }
         this.editEmail = false
         this.loading = false
@@ -103,8 +130,18 @@ import {vueTelegramLogin} from 'vue-telegram-login'
         try {
           const response = await this.$axios.get('/user')
           this.user = response.data;
-        } catch (e) {
-          alert("Could not retrieve account")
+        } catch (error) {
+          if (error.response && error.response.data) {
+            if(error.response.data.error) {
+              this.error = error.response.data.error
+            } else {
+              this.error = error.response.data
+            }
+          } else if (error.message) {
+            this.error = error.message
+          } else {
+            this.error = error
+          }
         }
         this.loading = false
       }
