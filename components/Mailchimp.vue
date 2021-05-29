@@ -1,6 +1,6 @@
 <template>
-    <div id="mc_embed_signup">
-        <p class="mb-2">WEYU is launching soon! Sign up and stay informed</p>
+    <div id="mc_embed_signup" class="column is-horizontal-centered is-3">
+        <p class="mb-2 has-text-white">Sign up and stay informed</p>
         <form action="https://weyu.us1.list-manage.com/subscribe/post?u=6ea3bc06a659e723a9cb304b7&amp;id=670088d08f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
             <div class="field" style="position: relative;">
                 <div class="control">

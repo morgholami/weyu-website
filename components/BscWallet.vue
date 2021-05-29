@@ -19,7 +19,11 @@
           <div v-if="loading" class="loader-wrapper is-active">
             <div class="loader is-loading"/>
           </div>
-          <div v-if="loggedIn">logged in</div>
+          <div v-if="loggedIn">
+            <nuxt-link class="button is-accent px-5" to="/account" @click="$bsc.loginModal = false;error = null" exact-active-class="is-active">
+                  <div>My Account</div>
+                </nuxt-link>
+          </div>
           <div v-else-if="bscWallet" class="has-text-centered has-text-black">
             <div class="block">
               <b class="has-text-black">Selected account</b>

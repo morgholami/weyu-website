@@ -1,30 +1,29 @@
 <template>
-  <section class="section">
-<!--    <div style="position: absolute; top:90px; right:0; overflow:hidden;max-height:800px;">-->
-<!--      <img src="~assets/img/nft-colors.png"  width="1000" class="is-hidden-mobile"/>-->
-<!--    </div>-->
+  <div>
+    <section class="section">
+      <div class="container has-text-centered">
+        <h2 class="title site-title is-spaced mt-6">Got NFTs?</h2>
+        <h4 class="subtitle is-6">The first Multi-Chain platform for the NFT resell market</h4>
+      </div>
+    </section>
     <div class="container">
       <div class="has-text-centered">
         <div class="is-horizontal-centered column is-three-quarters">
-          <div style="position: relative;">
-            <h2 class="title site-title is-spaced mt-6">Got NFTs?</h2>
-            <h4 class="subtitle is-6 mb-6">The first multi-chain platform for the NFT resale market</h4>
-<!--            <p class="block">-->
-<!--              Our obsessive compulsive focus is user experience. WEYU is building the easiest and most accessible platform for buying and selling any NFT from any Blockchain.-->
-<!--            </p>-->
-
-            <!-- Connect Block -->
-            <home-connect class="block" />
-          </div>
+          <!-- Connect Block -->
+          <home-connect class="block" />
         </div>
       </div>
     </div>
-    <weyu-footer />
-  </section>
+    <section class="section">
+      <weyu-footer class="block" />
+      <mailchimp class="block" />
+    </section>
+  </div>
 </template>
 
 <script>
   import HomeConnect from '@/components/HomeConnect.vue';
+  import Mailchimp from '@/components/Mailchimp.vue';
   import WeyuFooter from '@/components/Footer.vue';
 
   export default {
@@ -45,7 +44,8 @@
     },
     components: {
       HomeConnect,
-      WeyuFooter
+      WeyuFooter,
+      Mailchimp
     }
   }
 </script>

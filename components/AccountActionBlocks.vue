@@ -1,12 +1,12 @@
 <template>
     <div class="account-action-blocks mb-6 has-radius is-horizontal-centered">
-      <div class="columns">
+      <div class="columns is-variable is-8">
         <div class="is-half column">
 
           <!-- Refer block -->
           <div class="account-action-block px-6 py-5 has-radius is-flex-direction-column is-justify-content-space-between is-flex">
             <h3 class="mb-3 px-2 pt-2 has-text-weight-medium">Refer friends for extra tickets</h3>
-            <p>Use your unique link below to refer your friend. You earn <span class="has-text-secondary">2x tickets</span> for everyone who registers through your link.</p>
+            <p>Use your unique link below to refer your friend. You earn <span class="has-text-secondary has-text-weight-bold">2x tickets</span> for everyone who registers through your link.</p>
             <div class="field has-addons mt-5">
               <div class="control" style="width:100%;">
                 <input class="input is-medium copy px-5 py-5" type="text" :value="'https://weyu.io?ref='+user.referral_code" readonly>

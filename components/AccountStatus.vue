@@ -1,34 +1,34 @@
 <template>
-    <div class="account-status-block mt-4 px-5 py-4 has-radius is-horizontal-centered is-half column">
+    <div class="account-status-block mt-4 px-5 py-4 has-radius is-horizontal-centered is-6 column">
       <div class="columns">
 
         <!-- Address -->
-        <div class="is-one-third column px-6">
+        <div class="is-one-third column is-size-7 has-text-white">
           <div>
             <div class="is-flex is-flex-direction-column is-justify-content-space-between">
-              <i :class="[user.address ? 'fa-check-circle' : 'fa-times-circle', 'far', 'has-text-primary', 'mb-2']"></i>
-              <a class="has-text-white" :href="$bsc.explorer + '/address/'+ user.address" target="_blank" >{{ user.address ? user.address : '' }}</a>
+              <i class="is-size-5 mb-2 far has-text-primary" :class="[user.address ? 'fa-check-circle' : 'fa-times-circle']"></i>
+              <a class="has-text-white blockchain-address" :href="$bsc.explorer + '/address/'+ user.address" target="_blank" >{{ user.address ? user.address : '' }}</a>
               <p class="has-text-primary has-text-weight-medium">{{ user.address ? 'Verified' : ' Not verified' }}</p>
             </div>
           </div>
         </div>
 
         <!-- Username -->
-        <div class="is-one-third column px-6">
+        <div class="is-one-third column  is-size-7 has-text-white">
           <div>
-            <div class="is-flex is-flex-direction-column is-justify-content-space-between">
-              <i :class="[user.telegram_meta.username ? 'fa-check-circle' : 'fa-times-circle', 'far', 'has-text-primary', 'mb-2']"></i>
-              <p class="has-text-white">{{ user.telegram_meta.username ? user.telegram_meta.username : '' }}</p>
-              <p :class="[user.telegram_meta.username ? 'has-text-primary' : 'has-text-secondary', 'has-text-weight-medium']">{{ user.telegram_meta.username ? 'Connected' : ' Not connected' }}</p>
+            <div class="is-flex is-flex-direction-column is-justify-content-space-between" v-if="user.telegram_meta">
+              <i class="is-size-5 mb-2 far has-text-primary" :class="[user.telegram_meta ? 'fa-check-circle' : 'fa-times-circle']"></i>
+              <p class="has-text-white">{{ user.telegram_meta.username ? '@'+user.telegram_meta.username : user.telegram_meta.first_name }}</p>
+              <p :class="[user.telegram_meta ? 'has-text-primary' : 'has-text-secondary', 'has-text-weight-medium']">{{ user.telegram_meta ? 'Connected' : ' Not connected' }}</p>
             </div>
           </div>
         </div>
 
         <!-- Email -->
-        <div class="is-one-third column px-6">
+        <div class="is-one-third column  is-size-7 has-text-white">
           <div>
             <div class="is-flex is-flex-direction-column is-justify-content-space-between">
-              <i :class="[user.email ? 'fa-check-circle' : 'fa-times-circle', 'far', 'has-text-primary', 'mb-2']"></i>
+              <i  class="is-size-5 mb-2 far has-text-primary" :class="[user.email ? 'fa-check-circle' : 'fa-times-circle']"></i>
               <p class="has-text-white">{{ user.email ? user.email : '' }}</p>
               <p :class="[user.email ? 'has-text-primary' : 'has-text-secondary', 'has-text-weight-medium']">{{ user.email ? 'Connected' : ' Not connected' }}</p>
             </div>
@@ -63,20 +63,5 @@
       z-index:-1;
     }
 
-    i {
-      font-size: 1.3rem;
-    }
-
-    .column {
-      font-size: .8rem;
-      color: #fff;
-
-      a {
-        color: $text;
-        white-space: nowrap;
-        overflow-x: hidden;
-        text-overflow: ellipsis;
-      }
-    }
   }
 </style>

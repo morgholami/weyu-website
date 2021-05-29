@@ -18,7 +18,7 @@
               &nbsp;
             </small>
           </div>
-          <div @click="connectWallet('metamask')" class="has-radius has-background-white has-shadow my-4 p-2 connect-wallet">
+          <div @click="$bsc.loginModal = true" class="has-radius has-background-white has-shadow my-4 p-2 connect-wallet">
             <div class="is-flex is-justify-content-space-between is-align-items-center">
               <img src="~assets/img/wallet/metamask.png" style="width: auto; height: 35px;" />
               <div>
@@ -54,7 +54,7 @@
               &nbsp;
             </small>
           </div>
-          <div @click="connectWallet('metamask')" class="has-radius has-background-white has-shadow my-4 p-2 connect-wallet">
+          <div @click="$bsc.loginModal = true" class="has-radius has-background-white has-shadow my-4 p-2 is-disabled has-tooltip-arrow" data-tooltip="Coming Soon!">
             <div class="is-flex is-justify-content-space-between is-align-items-center">
               <img src="~assets/img/wallet/waxcloud.png" style="width: auto; height: 35px;" />
               <div>
@@ -90,7 +90,7 @@
               &nbsp;
             </small>
           </div>
-          <div @click="connectWallet('metamask')" class="has-radius has-background-white has-shadow my-4 p-2 connect-wallet">
+          <div @click="$bsc.loginModal = true" class="has-radius has-background-white has-shadow my-4 p-2 connect-wallet">
             <div class="is-flex is-justify-content-space-between is-align-items-center">
               <img src="~assets/img/wallet/metamask.png" style="width: auto; height: 35px;" />
               <div>
@@ -98,7 +98,7 @@
               </div>
             </div>
           </div>
-          <div class="has-radius has-background-white has-shadow my-4 p-2 is-disabled has-tooltip-arrow" data-tooltip="Coming Soon!">
+          <div @click="$bsc.loginModal = true" class="has-radius has-background-white has-shadow my-4 p-2 connect-wallet">
             <div class="is-flex is-justify-content-space-between is-align-items-center">
               <img src="~assets/img/wallet/trust.png" style="width: auto; height: 35px;" />
               <div>
@@ -126,7 +126,7 @@
               &nbsp;
             </small>
           </div>
-          <div @click="connectWallet('metamask')" class="has-radius has-background-white has-shadow my-4 p-2 connect-wallet">
+          <div @click="connectWallet('metamask')" class="has-radius has-background-white has-shadow my-4 p-2 is-disabled has-tooltip-arrow" data-tooltip="Coming Soon!">
             <div class="is-flex is-justify-content-space-between is-align-items-center">
               <img src="~assets/img/wallet/daedalus.png" style="width: auto; height: 35px;" />
               <div>
@@ -162,7 +162,7 @@
               &nbsp;
             </small>
           </div>
-          <div @click="connectWallet('metamask')" class="has-radius has-background-white has-shadow my-4 p-2 connect-wallet">
+          <div @click="connectWallet('metamask')" class="has-radius has-background-white has-shadow my-4 p-2  is-disabled has-tooltip-arrow" data-tooltip="Coming Soon!">
             <div class="is-flex is-justify-content-space-between is-align-items-center">
               <img src="~assets/img/wallet/sollet.svg"  style="width: auto; height: 35px;" />
               <div>

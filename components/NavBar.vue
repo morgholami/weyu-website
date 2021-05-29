@@ -21,13 +21,10 @@
 
           </div>
           <div class="navbar-end is-align-items-center">
-            <!-- <div @click="mobileMenu = false">
-              <nuxt-link class="navbar-item" to="/" exact-active-class="is-active">
-                <div>Home</div>
+            <div @click="mobileMenu = false">
+              <nuxt-link class="navbar-item" to="/platform" exact-active-class="is-active">
+                <div>Platform</div>
               </nuxt-link>
-            </div> -->
-            <div class="navbar-item is-disabled" to="/platform" exact-active-class="is-active">
-              <div class="has-tooltip-bottom has-tooltip-arrow" data-tooltip="Coming Soon!">Platform</div>
             </div>
             <div @click="mobileMenu = false">
               <nuxt-link class="navbar-item" to="/whitepaper" exact-active-class="is-active">
