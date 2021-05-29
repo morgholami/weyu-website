@@ -76,6 +76,11 @@
           <div class="has-text-centered">
             <!-- Account Status Bar -->
             <p class="has-text-white">Congrats {{ user.telegram_meta.first_name }}, you are registered!</p>
+            <p class="is-size-6">You have</p>
+            <div class="tickets">
+              <div class="is-size-3">{{tickets}}</div>
+              <div style="margin-top: -10px;">Tickets</div>
+            </div>
             <account-status :user="user"/>
             <h2 class="title site-title is-1 has-text-weight-medium is-spaced mt-6">Earn Extra WEYU Tickets</h2>
             <h4 class="subtitle is-6 mb-6">Earning extra tickets is easy and fun!</h4>
@@ -126,7 +131,8 @@ export default {
       error: null,
       user: null,
       email: null,
-      editEmail: false
+      editEmail: false,
+      tickets: 3
     }
   },
   created() {
@@ -211,6 +217,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.tickets {
+  background: url("~assets/img/ticket-bg.svg");
+  background-size: cover;
+  margin: 0 auto;
+  width: 100px;
+  color: white;
+}
 .step {
   font-size: 1.7rem;
   display: flex;

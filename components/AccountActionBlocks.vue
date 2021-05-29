@@ -47,9 +47,9 @@
             <div class="columns mt-5">
               <div class="column is-one-third">
                 <div class="task has-radius p-2">
-                  <img src="~assets/img/ticket.svg" class="my-3" />
+                  <img src="~assets/img/ticket.svg" class="my-3" style="height: 53px;" />
                   <p class="has-text-secondary has-text-weight-bold">1x Ticket</p>
-                  <p>Subscribe to Twitter</p>
+                  <p style="min-height:35px">Subscribe to Twitter</p>
                   <button class="button has-text-weight-medium is-outlined is-secondary is-link mt-4">
                     Subscribe
                   </button>
@@ -57,9 +57,9 @@
               </div>
               <div class="column is-one-third">
                 <div class="task has-radius p-2">
-                  <img src="~assets/img/tickets.svg" class="my-3" />
+                  <img src="~assets/img/tickets.svg" class="my-3" style="height: 53px;" />
                   <p class="has-text-secondary has-text-weight-bold">2x Tickets</p>
-                  <p>Retweet and tag 3 friends</p>
+                  <p style="min-height:35px">Retweet and tag 3 friends</p>
                   <button class="button has-text-weight-medium is-outlined is-secondary is-link mt-4">
                     Retweet
                   </button>
@@ -67,9 +67,9 @@
               </div>
               <div class="column is-one-third">
                 <div class="task has-radius p-2">
-                  <img src="~assets/img/ticket.svg" class="my-3" />
+                  <img src="~assets/img/ticket.svg" class="my-3" style="height: 53px;" />
                   <p class="has-text-secondary has-text-weight-bold">1x Ticket</p>
-                  <p>50 Claps for Medium blog</p>
+                  <p style="min-height:35px">50 Claps for Medium blog</p>
                   <button class="button has-text-weight-medium is-outlined is-secondary is-link mt-4">
                     50 claps
                   </button>
