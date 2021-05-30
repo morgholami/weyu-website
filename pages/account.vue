@@ -86,7 +86,7 @@
             <h4 class="subtitle is-6 mb-6">Earning extra tickets is easy and fun!</h4>
 
             <!-- Account Action Blocks -->
-            <account-action-blocks :user="user"/>
+            <account-action-blocks @submit-task="getTasks" :referrals="referrals" :tasks="tasks" :user="user"/>
 
           </div>
         </div>
@@ -116,6 +116,18 @@ export default {
   computed: {
     loggedIn() {
       return (this.$bsc && this.$bsc.token)
+    },
+    tickets() {
+      if (this.referrals === null || this.tasks === null) return '..'
+      let tickets = 3
+      tickets += 2 * this.referrals
+      this.tasks.forEach(task => {
+        if (task.created_at) {
+          tickets += task.tickets;
+        }
+      })
+      if (tickets > 100) tickets = 100
+      return tickets
     }
   },
   components: {
@@ -132,7 +144,8 @@ export default {
       user: null,
       email: null,
       editEmail: false,
-      tickets: 3
+      referrals: null,
+      tasks: null
     }
   },
   created() {
@@ -141,6 +154,8 @@ export default {
       this.$router.push("/")
     } else {
       this.getUser()
+      this.getReferrals()
+      this.getTasks()
     }
   },
   methods: {
@@ -211,6 +226,42 @@ export default {
         }
       }
       this.loading = false
+    },
+    async getReferrals() {
+      try {
+        const response = await this.$axios.get('/user/referrals')
+        this.referrals = parseInt(response.data)
+      } catch (error) {
+        if (error.response && error.response.data) {
+          if (error.response.data.error) {
+            this.error = error.response.data.error
+          } else {
+            this.error = error.response.data
+          }
+        } else if (error.message) {
+          this.error = error.message
+        } else {
+          this.error = error
+        }
+      }
+    },
+    async getTasks() {
+      try {
+        const response = await this.$axios.get('/tasks')
+        this.tasks = response.data
+      } catch (error) {
+        if (error.response && error.response.data) {
+          if (error.response.data.error) {
+            this.error = error.response.data.error
+          } else {
+            this.error = error.response.data
+          }
+        } else if (error.message) {
+          this.error = error.message
+        } else {
+          this.error = error
+        }
+      }
     }
   }
 }
