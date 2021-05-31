@@ -57,6 +57,7 @@ export default (context, inject) => {
             // This method is only available for WalletConnect
             await this.walletConnect.disconnect()
             this.wallet = null
+            window.location.reload()
           } else {
             this.wallet = null
           }
@@ -73,6 +74,7 @@ export default (context, inject) => {
             // This method is only available for WalletConnect
             await this.walletConnect.disconnect()
             this.wallet = null
+            window.location.reload()
           } else {
             this.wallet = null
           }
