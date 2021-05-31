@@ -29,7 +29,22 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: 'Got NFTs?' },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'WEYU - Got NFTs?'
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: 'WEYU is the first Multi-Chain platform for the NFT resale market'
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: 'https://weyu.io/img/image.jpg'
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
