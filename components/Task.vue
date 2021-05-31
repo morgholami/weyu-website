@@ -4,13 +4,14 @@
     <div class="modal-card">
       <form @submit.prevent="submitTask">
         <header class="modal-card-head">
-          <p class="modal-card-title">
+          <div class="subtitle has-text-black" style="width:100%">
             {{task.name}}
-          </p>
+          </div>
           <button class="delete" aria-label="close" @click="$parent.selectedTask = null"/>
         </header>
-        <section class="modal-card-body has-text-black">
-            <div class="block">{{task.description}}</div>
+        <section class="modal-card-body has-text-black pt-0">
+          <div class="has-background-white-bis has-text-left has-radius p-5 mx-2" style="line-height: 2">
+            <div class="block" v-if="task.description">{{task.description}}</div>
             <div v-if="task.key === 'twitter'">
               <div>1. <a href="https://twitter.com/weyuofficial?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @weyuofficial</a></div>
               <div>2. Retweet <a href="https://twitter.com/weyuofficial/status/1398609096794902531" target="_blank">this tweet</a> and tag 3 friends</div>
@@ -20,7 +21,7 @@
             </div>
             <div v-else-if="task.key === 'telegram'">
               <div>1. Join <a href="https://t.me/WEYUchat" target="_blank">WEYU Chat Telegram group</a></div>
-              <div>3. Add one friend to the <a href="https://t.me/WEYUchat" target="_blank">Telegram Group</a></div>
+              <div>2. Add one friend to the <a href="https://t.me/WEYUchat" target="_blank">Telegram Group</a></div>
               <div>3. Join <a href="https://t.me/weyuofficial" target="_blank">WEYU Announcement Telegram channel</a></div>
             </div>
           <div v-else-if="task.key === 'youtube'">
@@ -41,10 +42,15 @@
             <input type="checkbox" v-model="checkbox">
             I have completed this task
           </label>
+          </div>
         </section>
         <footer class="modal-card-foot">
-          <div class="button" style="margin-left: auto" @click.prevent="$parent.selectedTask = null">Cancel</div>
-          <button class="button is-secondary" type="submit" :class="{'is-loading': loading}" :disabled="!checkbox">Submit</button>
+          <div class="column is-half">
+            <div class="button is-fullwidth" style="margin-left: auto" @click.prevent="$parent.selectedTask = null">Cancel</div>
+          </div>
+          <div class="column is-half">
+            <button class="button is-fullwidth is-secondary" type="submit" :class="{'is-loading': loading}" :disabled="!checkbox">Submit</button>
+          </div>
         </footer>
       </form>
     </div>

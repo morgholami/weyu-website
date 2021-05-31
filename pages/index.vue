@@ -1,47 +1,31 @@
 <template>
-  <section class="section">
-    <!--    <div style="position: absolute; top:90px; right:0; overflow:hidden;max-height:800px;">-->
-    <!--      <img src="~assets/img/nft-colors.png"  width="1000" class="is-hidden-mobile"/>-->
-    <!--    </div>-->
-    <div class="container ">
+  <div>
+    <section class="section">
+      <div class="container has-text-centered">
+        <h2 class="title site-title is-spaced mt-6">Got NFTs?</h2>
+        <h4 class="subtitle is-6">The first Multi-Chain platform for the NFT resale market</h4>
+      </div>
+    </section>
+    <div class="container">
       <div class="has-text-centered">
-        <div class="is-horizontal-centered column is-one-third mt-4 oval-lines">
-          <div style="position: relative;">
-            <img src="~assets/img/logo.svg" width="150"/>
-            <h2 class="title site-title is-spaced mt-6">Got NFTs?</h2>
-            <h4 class="subtitle is-4 mb-6">The first multi-chain platform for the NFT resale market</h4>
-            <!--            <p class="block">-->
-            <!--              Our obsessive compulsive focus is user experience. WEYU is building the easiest and most accessible platform for buying and selling any NFT from any Blockchain.-->
-            <!--            </p>-->
-            <mailchimp class="block" />
-            <div class="columns mt-6 block">
-              <div class="column is-half">
-                <div class="px-2 py-4 has-radius has-background-black-transparent has-text-centered">
-                  <h2 class="is-size-7 mb-2">Follow our updates on:</h2>
-                  <a href="https://twitter.com/weyuofficial" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-twitter"></i></a>
-                  <a href="https://instagram.com/weyuofficial" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-instagram"></i></a>
-                  <a href="https://t.me/WEYUchat" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-telegram"></i></a>
-                  <a href="https://github.com/weyuio" target="_blank" class="subtitle is-5 mx-2"><i class="fab fa-github"></i></a>
-                </div>
-              </div>
-              <div class="column is-half">
-                <div class="px-2 py-4 has-radius has-background-black-transparent has-text-centered">
-                  <h2 class="is-size-7 mb-2">Contact us:</h2>
-                  <a href="mailto:team@weyu.io" target="_blank" class="subtitle is-5">team@weyu.io</a>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="is-horizontal-centered column is-three-quarters">
+          <!-- Connect Block -->
+          <home-connect class="block" />
         </div>
-
       </div>
     </div>
-
-  </section>
+    <section class="section">
+      <weyu-footer class="block" />
+      <mailchimp class="block" />
+    </section>
+  </div>
 </template>
 
 <script>
-import Mailchimp from '@/components/Mailchimp';
+import HomeConnect from '@/components/HomeConnect.vue';
+import Mailchimp from '@/components/Mailchimp.vue';
+import WeyuFooter from '@/components/Footer.vue';
+
 export default {
   head() {
     return {
@@ -59,6 +43,8 @@ export default {
     }
   },
   components: {
+    HomeConnect,
+    WeyuFooter,
     Mailchimp
   }
 }
@@ -108,6 +94,7 @@ export default {
     animation-delay: 0.2s, 1.2s;
     animation-fill-mode: forwards;
   }
+
 }
 @media only screen and (max-width: 1280px) {
   .oval-lines {
@@ -130,6 +117,7 @@ export default {
       animation-delay: 0.2s, 1.2s;
       animation-fill-mode: forwards;
     }
+
   }
 }
 .site-title {
