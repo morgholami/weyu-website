@@ -1,11 +1,11 @@
 <template>
-  <div class="account-action-blocks mb-6 has-radius is-horizontal-centered">
+  <div class="account-action-blocks has-radius is-horizontal-centered">
     <task v-if="selectedTask" :task="selectedTask" @submit-task="selectedTask = null; $emit('submit-task')"/>
     <div class="columns is-variable is-8">
       <div class="is-half column">
 
         <!-- Refer block -->
-        <div class="account-action-block px-6 py-5 has-radius">
+        <div class="account-action-block px-6 py-5 has-radius" style="position: relative">
           <h3 class="mb-3 px-2 pt-2 has-text-weight-medium">Refer friends for extra tickets</h3>
           <p>Use your unique link below to refer your friend. You earn <span
               class="has-text-secondary has-text-weight-bold">2x tickets</span> for everyone who registers through your
@@ -21,11 +21,11 @@
               </a>
             </p>
           </div>
-          <p v-if="copied" class="has-text-success has-text-weight-medium">Copied to clipboard!</p>
-          <div class="field is-grouped is-flex is-justify-content-center is-flex-wrap-wrap mt-5">
+          <p v-if="copied" class="has-text-success has-text-weight-medium has-text-centered" style="position: absolute; left:0; width:100%">Copied to clipboard!</p>
+          <div class="field is-grouped is-flex is-justify-content-center is-flex-wrap-wrap mt-6">
             <div class="control">
               <a target="_blank"
-                 :href="'https://twitter.com/intent/tweet?url=https://weyu.io?ref='+user.referral_code+'&text=Participate in the WEYU Lottery %2B Airdrop!'">
+                 :href="'https://twitter.com/intent/tweet?url=https://weyu.io?ref='+user.referral_code+'&text=%F0%9F%9A%A8%24WEYU Whitelist %2B Airdrop is LIVE! Register now for guaranteed airdrop:'">
                 <button class="button is-outlined is-link">
                   Share on Twitter
                   <i class="fab fa-twitter"></i>
@@ -34,7 +34,7 @@
             </div>
             <div class="control">
               <a target="_blank"
-                 :href="'https://t.me/share/url?url=https://weyu.io?ref='+user.referral_code+'&text=Participate in the WEYU Lottery %2B Airdrop!'">
+                 :href="'https://t.me/share/url?url=https://weyu.io?ref='+user.referral_code+'&text=%E2%98%9D%EF%B8%8F %24WEYU Whitelist %2B Airdrop is LIVE! Register now for guaranteed airdrop %E2%98%9D%EF%B8%8F'">
                 <button class="button is-outlined is-link">
                   Share on Telegram
                   <i class="fab fa-telegram"></i>
@@ -42,12 +42,12 @@
               </a>
             </div>
           </div>
-          <h2 class="subtitle has-text-black mt-6 pt-6">Your Referrals</h2>
-          <div v-if="referrals === null">Loading referrals..</div>
-          <div v-else-if="referrals === 0">No referrals yet..</div>
-          <div v-else><span class="has-text-weight-bold has-text-secondary">{{ referrals }} People</span> registered
-            through your referral link
-          </div>
+<!--          <h2 class="subtitle has-text-black mt-6 pt-6">Your Referrals</h2>-->
+<!--          <div v-if="referrals === null">Loading referrals..</div>-->
+<!--          <div v-else-if="referrals === 0">No referrals yet..</div>-->
+<!--          <div v-else><span class="has-text-weight-bold has-text-secondary">{{ referrals }} People</span> registered-->
+<!--            through your referral link-->
+<!--          </div>-->
         </div>
       </div>
 
@@ -74,7 +74,7 @@
                 </button>
               </div>
             </div>
-            <div class="column is-one-third">
+            <div class="column is-one-third" v-show="false">
               <div class="task has-radius p-2">
                 <img src="~assets/img/tickets.svg" class="my-3" style="height: 53px;"/>
                 <p class="has-text-secondary has-text-weight-bold">Earn more Tickets</p>

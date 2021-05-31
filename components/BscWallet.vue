@@ -74,7 +74,7 @@
             </div>
             <div class="column is-half">
               <div class="provider has-radius is-mobile" @click="selectWallet('walletconnect')">
-                <img src="@/assets/img/providers/walletconnect.svg">
+                <img src="@/assets/img/providers/walletconnect.svg" style="height:30px;margin-top:5px">
                 WalletConnect
               </div>
             </div>

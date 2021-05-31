@@ -3,7 +3,7 @@
     <section class="section">
       <div class="container has-text-centered">
         <h2 class="title site-title is-spaced mt-6">Got NFTs?</h2>
-        <h4 class="subtitle is-6">The first Multi-Chain platform for the NFT resell market</h4>
+        <h4 class="subtitle is-6">The first Multi-Chain platform for the NFT resale market</h4>
       </div>
     </section>
     <div class="container">

@@ -9,7 +9,7 @@
             <!-- Register Block -->
             <div class="has-text-centered mt-5">
               <div class="column is-horizontal-centered is-9 block">
-                <h1 class="title has-text-weight-medium">Welcome to the WEYU Open Private Sale Registration</h1>
+                <h1 class="title has-text-weight-medium">Welcome to the WEYU<br>Whitelist + Airdrop Registration</h1>
               </div>
               <div class="gradient-block py-6">
                 <div class="column is-horizontal-centered is-8 is-flex is-justify-content-center is-align-items-center"  style="position: relative;">
@@ -21,7 +21,7 @@
                       <input type="text" class="input is-transparent is-white has-text-white input-weyu" readonly :value="user.address">
                     </div>
                     <div class="control button-weyu">
-                      <button class="button is-white is-outlined is-static">Verified</button>
+                      <div class="has-text-primary has-text-weight-bold" style="padding: 7px 6px 0px 0px">Verified</div>
                     </div>
                   </div>
                 </div>
@@ -35,9 +35,9 @@
                       <input type="text" readonly class="input is-transparent is-primary has-text-white input-weyu" :value="user.telegram_meta ? ( user.telegram_meta.username ? '@'+user.telegram_meta.username : user.telegram_meta.first_name ) : null"  placeholder="Connect Telegram >">
                     </div>
                     <div class="control button-weyu">
-                      <button class="button is-static is-outlined is-white" v-if="user.telegram">
+                      <div class="has-text-primary has-text-weight-bold" style="padding: 7px 6px 0px 0px" v-if="user.telegram">
                         <span>Connected</span>
-                      </button>
+                      </div>
                       <vue-telegram-login
                           v-else
                           mode="callback"
@@ -75,11 +75,11 @@
         <div class="container ">
           <div class="has-text-centered">
             <!-- Account Status Bar -->
-            <p class="has-text-white">Congrats {{ user.telegram_meta.first_name }}, you are registered!</p>
-            <p class="is-size-6">You have</p>
+            <p class="has-text-white block">Congrats {{ user.telegram_meta.first_name }}, you are registered!</p>
+            <p class="is-size-6 has-text-white">You have</p>
             <div class="tickets">
-              <div class="is-size-3">{{tickets}}</div>
-              <div style="margin-top: -10px;">Tickets</div>
+              <div class="is-size-4 has-text-weight-bold">{{tickets}}</div>
+              <div style="margin-top: -8px;padding-bottom:3px" class="">Tickets</div>
             </div>
             <account-status :user="user"/>
             <h2 class="title site-title is-1 has-text-weight-medium is-spaced mt-6">Earn Extra WEYU Tickets</h2>
@@ -92,16 +92,15 @@
         </div>
       </section>
     </div>
-    <section class="section">
+
       <div class="has-text-centered container">
         <div class="has-text-centered mb-4">
-          <a class="button is-danger" @click="$bsc.logout()">
+          <a class="button is-outlined is-primary is-small" style="border-radius: 6px" @click="$bsc.logout()">
             Logout
           </a>
         </div>
         <weyu-footer/>
       </div>
-    </section>
   </div>
 </template>
 

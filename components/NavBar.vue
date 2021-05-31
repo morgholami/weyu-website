@@ -22,6 +22,11 @@
           </div>
           <div class="navbar-end is-align-items-center">
             <div @click="mobileMenu = false">
+              <nuxt-link class="navbar-item" to="/" exact-active-class="is-active">
+                <div>Home</div>
+              </nuxt-link>
+            </div>
+            <div @click="mobileMenu = false">
               <nuxt-link class="navbar-item" to="/platform" exact-active-class="is-active">
                 <div>Platform</div>
               </nuxt-link>
@@ -49,7 +54,7 @@
                 </div>
               </div>
               <div v-else>
-                <nuxt-link class="button is-accent px-5" to="/account" exact-active-class="is-active">
+                <nuxt-link class="button is-primary is-outlined px-5" to="/account" exact-active-class="is-active">
                   <div>My Account</div>
                 </nuxt-link>
               </div>
