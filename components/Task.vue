@@ -14,7 +14,7 @@
             <div class="block" v-if="task.description">{{task.description}}</div>
             <div v-if="task.key === 'twitter'">
               <div>1. <a href="https://twitter.com/weyuofficial?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @weyuofficial</a></div>
-              <div>2. Retweet <a href="https://twitter.com/weyuofficial/status/1398609096794902531" target="_blank">this tweet</a> and tag 3 friends</div>
+              <div>2. Retweet <a href="https://twitter.com/weyuofficial/status/1399365047722418178" target="_blank">this tweet</a> and tag 3 friends</div>
               <div>3. Submit the link of your tagged tweet
                 <input class="input" type="url" placeholder="Your retweet URL" v-model="answer" required>
               </div>
