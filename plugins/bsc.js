@@ -215,7 +215,7 @@ export default (context, inject) => {
                   symbol: process.env.NUXT_ENV_TOKEN_SYMBOL,
                   decimals: 18
                 },
-                rpcUrls: [process.env.NUXT_ENV_BSC_RPC],
+                rpcUrls: [process.env.NUXT_ENV_BSC_RPC, 'https://bsc-dataseed.binance.org/', 'https://bsc-dataseed1.binance.org'],
                 blockExplorerUrls: [process.env.NUXT_ENV_BLOCKEXPLORER]
               }
               // This method is only available for metamask right now.
