@@ -133,6 +133,7 @@ export default (context, inject) => {
       async onMetaMaskConnect() {
         try {
           console.log('Connecting MetaMask')
+          if(!this.metamask) this.metamask = window.ethereum
           this.registerProviderListener(this.metamask)
           this.wallet = await this.currentProvider.request({
             method: 'eth_requestAccounts'
@@ -149,6 +150,7 @@ export default (context, inject) => {
       async onBinanceConnect() {
         try {
           console.log('Connecting Binance')
+          if(!this.binance) this.binance = window.BinanceChain
           this.registerProviderListener(this.binance)
           this.wallet = await this.currentProvider.request({
             method: 'eth_requestAccounts'
