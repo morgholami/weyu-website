@@ -19,9 +19,9 @@
               </div>
             </div>
             <div v-else-if="task.key === 'telegram'">
-              <div>1. Join <a href="https://t.me/weyuofficial" target="_blank">WEYU Announcement Telegram channel</a></div>
-              <div>2. Join <a href="https://t.me/WEYUchat" target="_blank">WEYU Chat Telegram group</a></div>
+              <div>1. Join <a href="https://t.me/WEYUchat" target="_blank">WEYU Chat Telegram group</a></div>
               <div>3. Add one friend to the <a href="https://t.me/WEYUchat" target="_blank">Telegram Group</a></div>
+              <div>3. Join <a href="https://t.me/weyuofficial" target="_blank">WEYU Announcement Telegram channel</a></div>
             </div>
           <div v-else-if="task.key === 'youtube'">
             <div>1. Subscribe to <a href="https://www.youtube.com/channel/UC00y0RUkr11MLorqxKkqhbQ" target="_blank">WEYU YouTube Channel</a></div>

@@ -85,7 +85,7 @@ export default (context, inject) => {
 
       updateAccount() {
         if (this.wallet) {
-          this.getAccountBalance()
+          //this.getAccountBalance()
         }
       },
 
@@ -254,6 +254,16 @@ export default (context, inject) => {
       },
 
       async sign(message) {
+        if (this.currentProvider == this.binance) {
+          const signature = await this.currentProvider.request({
+            method: 'eth_sign',
+            params: [
+              this.wallet[0],
+              web3.utils.sha3("weyu_"+message, { encoding: 'hex' })
+            ]
+          })
+          return signature
+        }
         const signature = await this.currentProvider.request({
           method: 'personal_sign',
           params: [

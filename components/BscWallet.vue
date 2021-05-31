@@ -122,6 +122,7 @@ export default {
       try {
         const timestamp = Math.floor(+new Date() / 1000)
         const signature = await this.$bsc.sign(timestamp)
+        console.log("sig",signature)
         const response = await this.$axios.post('/login', {
           address: this.bscWallet[0],
           signature: signature,
@@ -134,6 +135,7 @@ export default {
         this.error = null
         this.$router.push("/account")
       } catch (error) {
+        console.error("ERR", error);
         if (error.response && error.response.data) {
           if(error.response.data.error) {
             this.error = error.response.data.error
