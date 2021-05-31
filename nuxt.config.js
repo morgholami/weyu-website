@@ -1,3 +1,9 @@
+// eslint-disable-next-line nuxt/no-cjs-in-config
+require('./config.js')
+
+import path from 'path'
+import fs from 'fs'
+
 export default {
   ssr: false,
 
@@ -7,6 +13,8 @@ export default {
   generate: {
     fallback: true
   },
+
+  router: { middleware: ['referral'] },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -36,6 +44,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '@/plugins/bsc.js', mode: 'client' },
+    { src: '~/plugins/axios.js' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -52,6 +62,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
     '@nuxtjs/google-gtag',
     '@nuxtjs/svg',
     ['@nuxtjs/google-adsense', {
@@ -71,6 +82,14 @@ export default {
         //send_page_view: false // optional configurations
       }
     }]
+  },
+
+  server: {
+    port: 443,
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

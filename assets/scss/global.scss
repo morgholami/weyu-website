@@ -68,6 +68,10 @@ a.card {
       color: white;
       opacity: 0.3;
     }
+    &.is-white {
+      background-color: transparent;
+      border-color: white;
+    }
   }
 
 }
@@ -102,8 +106,14 @@ a.card {
   }
 }
 
+.button.is-primary.is-outlined:active, .button.is-primary.is-outlined.is-active {
+  background-color: $primary;
+  border-color: transparent;
+  color: black;
+}
+
 .has-radius {
-  border-radius: 14px;
+  border-radius: 12px;
 }
 .has-radius-small {
   border-radius: 7px;
@@ -111,4 +121,30 @@ a.card {
 
 .has-shadow {
   box-shadow: $box-shadow;
+}
+
+.blockchain-address {
+  font-family: monospace;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+.gradient-block {
+  position: relative;
+  //background: linear-gradient(46deg, #1CECF3 0%, rgba(33,0,66,0.10) 34%, rgba(26,46,116,0.00) 49%, rgba(33,0,66,0.10) 65%, #DE3AC7 100%);
+  background: linear-gradient(65deg, $primary-gradient 0, $gradient-bg 30%, $gradient-bg 70%, $secondary-gradient 100%);
+  border-radius: 15px;
+  &:before {
+    border-radius: 15px;
+    content: '';
+    background-image: linear-gradient(65deg, $primary 0%, $accent 100%);
+    top: -2px;
+    left: -2px;
+    bottom: -2px;
+    right: -2px;
+    position: absolute;
+    z-index:-1;
+  }
 }
