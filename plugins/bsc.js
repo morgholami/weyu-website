@@ -10,14 +10,12 @@ const web3 = new Web3()
 
 const walletProvider = new WalletConnectProvider({
   // For some reason, chainID needs to be 1
-  chainId: 1,
+  chainId: process.env.NUXT_ENV_BSC_NETWORK_ID,
   rpc: {
-    1: process.env.NUXT_ENV_BSC_RPC
+    56: process.env.NUXT_ENV_BSC_RPC
   },
-  bridge: "https://bridge.walletconnect.org",
-  qrcodeModal: QRCodeModal,
   qrcodeModalOptions: {
-    mobileLinks: ["metamask", "trust", "rainbow", "argent"]
+    mobileLinks: ["metamask", "trust"]
   }
 })
 
