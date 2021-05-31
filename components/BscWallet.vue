@@ -163,7 +163,7 @@ export default {
             await this.$bsc.onWalletConnectWeb3()
             break
           case 'trust':
-            alert('Trust wallet coming soon')
+            await this.$bsc.onWalletConnectWeb3()
             break
         }
         this.error = null
