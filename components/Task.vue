@@ -26,7 +26,7 @@
             </div>
           <div v-else-if="task.key === 'youtube'">
             <div>1. Subscribe to <a href="https://www.youtube.com/channel/UC00y0RUkr11MLorqxKkqhbQ" target="_blank">WEYU YouTube Channel</a></div>
-            <div>2. Like + comment on <a href="https://www.youtube.com/watch?v=vTPGpkchEog" target="_blank">this video</a></div>
+            <div>2. Like + comment on <a href="https://youtu.be/CLNP9hVkiJE" target="_blank">this video</a></div>
             <div>3. Enter your YouTube username
               <input class="input" type="text" placeholder="Your YouTube username" v-model="answer" required>
             </div>
