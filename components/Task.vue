@@ -43,6 +43,9 @@
                 <input class="input" type="text" placeholder="Your Instagram username" v-model="answer" required>
               </div>
             </div>
+            <div v-else-if="task.key === 'airdrops'">
+              <div>Give WEYU a <strong>+</strong> on <a href="https://airdrops.io/weyu/" target="_blank">Airdrops.io</a></div>
+            </div>
           <label class="checkbox mt-4">
             <input type="checkbox" v-model="checkbox">
             I have completed this task
