@@ -74,7 +74,7 @@
                 </button>
               </div>
             </div>
-            <div class="column is-one-third" v-show="false">
+            <div class="column is-one-third">
               <div class="task has-radius p-2">
                 <img src="~assets/img/tickets.svg" class="my-3" style="height: 53px;"/>
                 <p class="has-text-secondary has-text-weight-bold">Earn more Tickets</p>
