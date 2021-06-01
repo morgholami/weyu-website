@@ -139,7 +139,11 @@ export default {
         this.$axios.setToken(response.data.token, 'Bearer')
         this.$bsc.loginModal = false
         this.error = null
-        this.$router.push("/account")
+        if(this.$route.query.redirect) {
+          this.$router.push(this.$route.query.redirect)
+        } else {
+          this.$router.push("/account")
+        }
       } catch (error) {
         console.error("ERR", error);
         if (error.response && error.response.data) {

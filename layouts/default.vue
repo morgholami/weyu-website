@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :class="{ 'homepage': $route.path == '/', 'light': $route.path.includes('platform') || $route.path.includes('whitepaper') || $route.path.includes('invest')  || $route.path.includes('whitelist') }">
+  <div id="app" :class="{ 'homepage': $route.path == '/', 'light': $route.path.includes('admin') || $route.path.includes('platform') || $route.path.includes('whitepaper') || $route.path.includes('invest')  || $route.path.includes('whitelist') }">
     <nav-bar/>
     <bsc-wallet />
     <div id="content">
