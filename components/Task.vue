@@ -37,7 +37,12 @@
               <input class="input" type="text" placeholder="Your Medium username" v-model="answer" required>
             </div>
           </div>
-
+            <div v-else-if="task.key === 'instagram'">
+              <div>1. <a href="https://www.instagram.com/weyuofficial/" target="_blank">Follow @weyuofficial</a> on Instagram</div>
+              <div>2. Enter your Instagram username
+                <input class="input" type="text" placeholder="Your Instagram username" v-model="answer" required>
+              </div>
+            </div>
           <label class="checkbox mt-4">
             <input type="checkbox" v-model="checkbox">
             I have completed this task
