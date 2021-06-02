@@ -136,7 +136,7 @@ export default {
       users: null,
       user: null,
       page: 1,
-      search: 'd'
+      search: ''
     }
   },
   watch: {
