@@ -32,9 +32,9 @@
             <input class="input" type="text" placeholder="Search.." v-model="search">
           </div>
           <div class="control">
-            <a class="button is-info" type="submit">
+            <button class="button is-info" type="submit">
               Search
-            </a>
+            </button>
           </div>
         </div>
       </form>
