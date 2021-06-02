@@ -26,7 +26,16 @@
     <div class="container">
       <error-modal/>
       <h2 class="subtitle">Whitelisted Users</h2>
-      <input v-model="search" type="text" class="input" placeholder="Search.."/>
+      <div class="field has-addons">
+        <div class="control">
+          <input class="input" type="text" placeholder="Search.." v-model="search">
+        </div>
+        <div class="control">
+          <a class="button is-info" @click="page = 1; getUsers()">
+            Search
+          </a>
+        </div>
+      </div>
       <div v-if="loading" class="has-text-centered subtitle"><progress class="progress is-small is-primary" max="100">Loading</progress></div>
       <div class="table-container">
         <table class="table is-fullwidth is-striped is-hoverable">
@@ -131,11 +140,6 @@ export default {
     }
   },
   watch: {
-    // whenever question changes, this function will run
-    search: function () {
-      this.page = 1
-      this.getUsers()
-    },
     page: function () {
       this.getUsers()
     }
