@@ -26,16 +26,18 @@
     <div class="container">
       <error-modal/>
       <h2 class="subtitle">Whitelisted Users</h2>
-      <div class="field has-addons">
-        <div class="control">
-          <input class="input" type="text" placeholder="Search.." v-model="search">
+      <form @submit.prevent="page = 1; getUsers()">
+        <div class="field has-addons">
+          <div class="control">
+            <input class="input" type="text" placeholder="Search.." v-model="search">
+          </div>
+          <div class="control">
+            <a class="button is-info" type="submit">
+              Search
+            </a>
+          </div>
         </div>
-        <div class="control">
-          <a class="button is-info" @click="page = 1; getUsers()">
-            Search
-          </a>
-        </div>
-      </div>
+      </form>
       <div v-if="loading" class="has-text-centered subtitle"><progress class="progress is-small is-primary" max="100">Loading</progress></div>
       <div class="table-container">
         <table class="table is-fullwidth is-striped is-hoverable">
