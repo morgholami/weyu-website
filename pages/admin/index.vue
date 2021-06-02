@@ -1,14 +1,89 @@
 <template>
   <section class="section">
+    <div class="modal is-active" v-if="user">
+      <div class="modal-background" @click="user = null"></div>
+      <div class="modal-content">
+        <div class="box has-text-black">
+          <div class="block"><b>Address:</b> {{user.address}}</div>
+          <div class="block"><b>Email:</b> {{user.email}}</div>
+          <div class="block"><b>Telegram:</b> <span v-if="user.telegram_meta">{{ user.telegram_meta.first_name }}<span
+              v-if="user.telegram_meta.username">(@{{ user.telegram_meta.username }})</span></span></div>
+          <div class="block"><b>Tickets:</b> {{user.tickets}}</div>
+          <div class="block"><b>Created:</b> {{user.created_at}}</div>
+          <div class="block"><b>Referrals:</b> {{user.referrals}}</div>
+          <div class="block"><b>Referral Code:</b> {{user.referral_code}}</div>
+          <div class="block"><b>Referrer:</b> {{user.referrer}}</div>
+          <div class="block"><b>Tasks:</b>
+            <div v-for="task in user.tasks" class="block">
+              - {{task.key}}: <b>{{task.answer}}</b><br>completed: {{task.created_at}}
+            </div>
+          </div>
+          <div class="block"><b>Telegram Meta:</b> {{user.telegram_meta}}</div>
+        </div>
+      </div>
+      <button class="modal-close is-large" @click="user = null" aria-label="close"></button>
+    </div>
     <div class="container">
       <error-modal/>
       <h2 class="subtitle">Whitelisted Users</h2>
-      <div v-if="loading" class="has-text-centered subtitle">Loading..</div>
-      <div >
-        <h2 class="subtitle has-text-black has-text-weight-bold"><span v-if="userCount !== null && !loadingUserCount">{{userCount}}</span><span v-else>...</span> users</h2>
-        <a @click="getUserCount"><small>refresh</small></a>
-      </div>
+      <input v-model="search" type="text" class="input" placeholder="Search.."/>
+      <div v-if="loading" class="has-text-centered subtitle"><progress class="progress is-small is-primary" max="100">Loading</progress></div>
+      <div class="table-container">
+        <table class="table is-fullwidth is-striped is-hoverable">
+          <thead>
+          <tr>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Telegram</th>
+            <th>Referrer</th>
+            <th>Referral Code</th>
+            <th>Created</th>
+          </tr>
+          </thead>
+          <tbody>
 
+
+          <tr v-for="user in users" :key="user.id" @click="getUser(user.id)">
+            <td>{{ user.address }}</td>
+            <td>{{ user.email }}</td>
+            <td><span v-if="user.telegram_meta">{{ user.telegram_meta.first_name }}<span
+                v-if="user.telegram_meta.username">(@{{ user.telegram_meta.username }})</span></span></td>
+            <td><a @click.prevent.stop="search = user.referrer">{{ user.referrer }}</a></td>
+            <td><a @click.prevent.stop="search = user.referral_code">{{ user.referral_code }}</a></td>
+            <td>{{ user.created_at }}</td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <nav class="pagination" role="navigation" aria-label="pagination" v-if="userCount && users">
+        <span>{{ (page - 1) * 20 + 1 }}-{{ (page - 1) * 20 + users.length }} of {{userCount}}</span>
+        <a class="pagination-previous" :disabled="page == 1">Previous</a>
+        <a class="pagination-next" :disabled="!maxPage || page == maxPage">Next page</a>
+        <ul class="pagination-list">
+          <li v-if="page > 2">
+            <a class="pagination-link" @click="page = 1">1</a>
+          </li>
+          <li v-if="page > 3">
+            <span class="pagination-ellipsis">&hellip;</span>
+          </li>
+          <li v-if="page > 1">
+            <a class="pagination-link" @click="page = page - 1">{{ page - 1 }}</a>
+          </li>
+          <li>
+            <a class="pagination-link is-current" aria-current="page">{{ page }}</a>
+          </li>
+          <li v-if="page < maxPage">
+            <a class="pagination-link" @click="page = page + 1">{{ page + 1 }}</a>
+          </li>
+          <li v-if="maxPage > page + 2">
+            <span class="pagination-ellipsis">&hellip;</span>
+          </li>
+          <li v-if="maxPage > page + 1">
+            <a class="pagination-link" @click="page = maxPage">{{ maxPage }}</a>
+          </li>
+        </ul>
+      </nav>
       <div class="has-text-centered container">
         <div class="has-text-centered mb-4">
           <a class="button is-outlined is-danger is-small" style="border-radius: 6px" @click="$bsc.logout()">
@@ -30,8 +105,11 @@ import AccountActionBlocks from '@/components/AccountActionBlocks.vue'
 
 export default {
   computed: {
-    loggedIn() {
+    loggedIn () {
       return (this.$bsc && this.$bsc.token)
+    },
+    maxPage () {
+      return Math.ceil(this.userCount / 20)
     }
   },
   components: {
@@ -41,28 +119,42 @@ export default {
     AccountStatus,
     AccountActionBlocks
   },
-  data() {
+  data () {
     return {
       loading: false,
-      loadingUserCount: false,
       error: null,
-      userCount: null
+      userCount: null,
+      users: null,
+      user: null,
+      page: 1,
+      search: 'd'
     }
   },
-  created() {
+  watch: {
+    // whenever question changes, this function will run
+    search: function () {
+      this.page = 1
+      this.getUsers()
+    },
+    page: function () {
+      this.getUsers()
+    }
+  },
+
+  created () {
     if (!this.loggedIn) {
       this.$bsc.loginModal = true
-      this.$router.push({path: "/", query: { redirect: 'admin' }})
+      this.$router.push({path: "/", query: {redirect: 'admin'}})
     } else {
-      this.getUserCount()
+      this.getUsers()
     }
   },
   methods: {
-    async getUserCount() {
-      this.loadingUserCount = true
+    async getUser (id) {
+      this.loading = true
       try {
-        const response = await this.$axios.get('/admin/users/count')
-        this.userCount = response.data
+        const response = await this.$axios.get(`/admin/user/${id}`)
+        this.user = response.data
       } catch (error) {
         if (error.response && error.response.data) {
           if (error.response.data.error) {
@@ -76,8 +168,30 @@ export default {
           this.error = error
         }
       }
-      this.loadingUserCount = false
-    }
+      this.loading = false
+    },
+    async getUsers () {
+      this.loading = true
+      try {
+        const response = await this.$axios.get(`/admin/users?page=${this.page}&q=${this.search}`)
+        this.users = response.data.users
+        this.userCount = response.data.count
+      } catch (error) {
+        if (error.response && error.response.data) {
+          if (error.response.data.error) {
+            this.error = error.response.data.error
+          } else {
+            this.error = error.response.data
+          }
+        } else if (error.message) {
+          this.error = error.message
+        } else {
+          this.error = error
+        }
+      }
+      this.loading = false
+    },
+
   }
 }
 </script>
