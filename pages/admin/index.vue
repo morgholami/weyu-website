@@ -69,8 +69,8 @@
       </div>
       <nav class="pagination" role="navigation" aria-label="pagination" v-if="userCount && users">
         <span>{{ (page - 1) * 20 + 1 }}-{{ (page - 1) * 20 + users.length }} of {{userCount}}</span>
-        <a class="pagination-previous" :disabled="page == 1">Previous</a>
-        <a class="pagination-next" :disabled="!maxPage || page == maxPage">Next page</a>
+        <a class="pagination-previous" :disabled="page == 1" @click="page = page - 1">Previous</a>
+        <a class="pagination-next" :disabled="!maxPage || page == maxPage" @click="page = page + 1">Next page</a>
         <ul class="pagination-list">
           <li v-if="page > 2">
             <a class="pagination-link" @click="page = 1">1</a>
