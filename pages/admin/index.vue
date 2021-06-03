@@ -26,6 +26,9 @@
     <div class="container">
       <error-modal/>
       <h2 class="subtitle">Whitelisted Users</h2>
+      <div class="block">
+        <h2 class="subtitle has-text-black has-text-weight-bold"><span v-if="userCount !== null && !loadingUserCount">{{userCount}}</span><span v-else>...</span> users <a @click="getUserCount"><small class="is-size-7">refresh</small></a></h2>
+      </div>
       <form @submit.prevent="page = 1; getUsers()">
         <div class="field has-addons">
           <div class="control">
@@ -46,22 +49,26 @@
             <th>Address</th>
             <th>Email</th>
             <th>Telegram</th>
+            <th>Referrals</th>
             <th>Referrer</th>
             <th>Referral Code</th>
             <th>Created</th>
+            <th>Tickets</th>
           </tr>
           </thead>
           <tbody>
 
 
-          <tr v-for="user in users" :key="user.id" @click="getUser(user.id)">
-            <td>{{ user.address }}</td>
+          <tr v-for="user in users" :key="user.id" @click="getUser(user.id)" class="is-size-7">
+            <td><span class=" blockchain-address">{{ user.address }}</span></td>
             <td>{{ user.email }}</td>
             <td><span v-if="user.telegram_meta">{{ user.telegram_meta.first_name }}<span
                 v-if="user.telegram_meta.username">(@{{ user.telegram_meta.username }})</span></span></td>
+            <td>{{ user.referrals }}</td>
             <td><a @click.prevent.stop="search = user.referrer">{{ user.referrer }}</a></td>
             <td><a @click.prevent.stop="search = user.referral_code">{{ user.referral_code }}</a></td>
             <td>{{ user.created_at }}</td>
+            <td>{{ parseInt(user.referrals) * 2 + parseInt(user.taskTickets || 0) + 3 }}</td>
           </tr>
 
           </tbody>
@@ -133,6 +140,7 @@ export default {
   data () {
     return {
       loading: false,
+      loadingUserCount: false,
       error: null,
       userCount: null,
       users: null,
@@ -153,9 +161,30 @@ export default {
       this.$router.push({path: "/", query: {redirect: 'admin'}})
     } else {
       this.getUsers()
+      this.getUserCount()
     }
   },
   methods: {
+    async getUserCount() {
+      this.loadingUserCount = true
+      try {
+        const response = await this.$axios.get('/admin/users/count')
+        this.userCount = response.data
+      } catch (error) {
+        if (error.response && error.response.data) {
+          if (error.response.data.error) {
+            this.error = error.response.data.error
+          } else {
+            this.error = error.response.data
+          }
+        } else if (error.message) {
+          this.error = error.message
+        } else {
+          this.error = error
+        }
+      }
+      this.loadingUserCount = false
+    },
     async getUser (id) {
       this.loading = true
       try {
