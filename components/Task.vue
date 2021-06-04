@@ -31,6 +31,13 @@
               <input class="input" type="text" placeholder="Your YouTube username" v-model="answer" required>
             </div>
           </div>
+          <div v-else-if="task.key === 'tiktok'">
+            <div>1. Follow to <a href="https://www.tiktok.com/@weyuofficial" target="_blank">@weyuofficial TikTok page</a></div>
+            <div>2. Like 3 videos from @weyuofficial</div>
+            <div>3. Enter your TikTok username
+              <input class="input" type="text" placeholder="Your TikTok username" v-model="answer" required>
+            </div>
+          </div>
           <div v-else-if="task.key === 'medium'">
             <div>1. Give 50 claps to <a href="https://weyu-io.medium.com/the-weyu-whitelist-airdrop-is-now-open-6a793c02302f" target="_blank">this medium post</a></div>
             <div>2. Enter your Medium username
