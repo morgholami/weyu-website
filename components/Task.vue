@@ -31,6 +31,12 @@
               <input class="input" type="text" placeholder="Your YouTube username" v-model="answer" required>
             </div>
           </div>
+          <div v-else-if="task.key === 'youtube2'">
+            <div>1. Subscribe + Like <a href="https://youtu.be/KuPVcQ7T9RM" target="_blank">this video</a></div>
+            <div>2. Enter your YouTube username
+              <input class="input" type="text" placeholder="Your YouTube username" v-model="answer" required>
+            </div>
+          </div>
           <div v-else-if="task.key === 'tiktok'">
             <div>1. Follow to <a href="https://www.tiktok.com/@weyuofficial" target="_blank">@weyuofficial TikTok page</a></div>
             <div>2. Like 3 videos from @weyuofficial</div>
