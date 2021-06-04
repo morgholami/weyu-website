@@ -58,7 +58,7 @@
           <p>All tasks will be verified before the $WEYU airdrop is distributed.</p>
           <div class="columns mt-5 is-multiline">
             <div v-if="tasks === null">Loading tasks..</div>
-            <div v-else class="column is-one-third" v-for="task in tasks" :key="task.id" v-show="task.key !== 'airdrops' || task.created_at">
+            <div v-else class="column is-one-third" v-for="task in tasks" :key="task.id" v-show="(task.key !== 'airdrops' && task.key !== 'youtube') || task.created_at">
               <div class="task has-radius p-2">
                 <img :src="task.tickets > 1 ? require('@/assets/img/tickets.svg') : require('@/assets/img/ticket.svg')"
                      class="my-3" style="height: 53px;"/>
