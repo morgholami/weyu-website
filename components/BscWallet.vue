@@ -128,7 +128,6 @@ export default {
       try {
         const timestamp = Math.floor(+new Date() / 1000)
         const signature = await this.$bsc.sign(timestamp)
-        console.log("sig", signature)
         const response = await this.$axios.post('/login', {
           address: this.bscWallet[0],
           signature: signature,

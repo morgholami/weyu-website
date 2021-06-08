@@ -9,7 +9,7 @@
             <!-- Register Block -->
             <div class="has-text-centered mt-5">
               <div class="column is-horizontal-centered is-9 block">
-                <h1 class="title has-text-weight-medium">Unfortunately, you are not registered for the WEYU<br>Whitelist
+                <h1 class="title has-text-weight-medium">Unfortunately, you are not registered for the WEYU Whitelist
                 </h1>
               </div>
             </div>
@@ -28,14 +28,31 @@
             </div>
             <account-status :user="user"/>
             <h2 class="title is-1 has-text-weight-medium is-spaced mt-6">WEYU Private Sale Lottery</h2>
-            <no-ssr>
-              <countdown :end-time="new Date(lotteryDate)">
+
+            <client-only>
+              <countdown :end-time="new Date(lotteryDate)" v-if="new Date(lotteryDate) > new Date()">
                 <span
                   slot="process"
                   slot-scope="{ timeObj }"><h2 class="subtitle">{{ `Drawing in: ${timeObj.h}:${timeObj.m}:${timeObj.s}` }}</h2></span>
-                <span slot="finish"><a @click="getUserStatus" class="button">Check if you have won!</a></span>
+                <span slot="finish"><a v-if="!userTokensale" @click="getUserTokensale" class="button">Check if you have won!</a></span>
               </countdown>
-            </no-ssr>
+            </client-only>
+
+            <h2 class="subtitle has-text-danger" v-if="userTokensale && ['NOT_SELECTED', 'REJECTED'].includes(userTokensale.status)">
+              Unfortunately, you were not selected.
+            </h2>
+            <div v-show="userTokensale && ['SELECTED', 'PARTICIPATED'].includes(userTokensale.status)">
+              <h2 class="subtitle">
+                You are selected to participate in the WEYU Tokensale!
+              </h2>
+              <button v-show="userTokensale && userTokensale.kyc_status !== 'VERIFIED'" @click="loadingKYC = true" :disabled="loadingKYC" class="synaps-verify-btn-blue" id="synaps-btn">
+                <template v-if="loadingKYC">Loading..</template><template v-else>Verify with Synaps</template>
+              </button>
+
+              <div>
+                KYC Status: <span v-if="userTokensale && !loadingTokensale">{{userTokensale.kyc_status}}</span><span v-if="loadingTokensale">Loading..</span>
+              </div>
+            </div>
 
           </div>
         </div>
@@ -55,6 +72,7 @@
 
 <script>
 import {vueTelegramLogin} from 'vue-telegram-login'
+import {SynapsClient} from '@synaps-io/synaps-client-sdk-js'
 import ErrorModal from '@/components/ErrorModal'
 import AccountStatus from '@/components/AccountStatus.vue'
 import WeyuFooter from '@/components/Footer.vue'
@@ -88,8 +106,11 @@ export default {
   data () {
     return {
       loading: false,
+      loadingTokensale: false,
+      loadingKYC: false,
       error: null,
       user: null,
+      userTokensale: null,
       email: null,
       editEmail: false,
       referrals: null,
@@ -105,11 +126,39 @@ export default {
       this.getUser()
       this.getReferrals()
       this.getTasks()
+      if (new Date() > new Date(this.lotteryDate)) {
+        this.getUserTokensale()
+      }
     }
   },
   methods: {
-    async getUserStatus () {
-      alert('you Won!')
+    async getUserTokensale () {
+      try {
+        this.loadingTokensale = true
+        this.loadingKYC = true
+        const response = await this.$axios.get('/user/tokensale')
+        if (!this.userTokensale && response.data.kyc_status !== 'VERIFIED') {
+          const Synaps = new SynapsClient(response.data.kyc_session_id, 'workflow');
+          console.log("init synaps..")
+          Synaps.init();
+          Synaps.on('finish', () => {
+            this.loadingKYC = false
+            this.getUserTokensale()
+            console.log("finish")
+          });
+          Synaps.on('close', () => {
+            console.log("close")
+            this.getUserTokensale()
+            this.loadingKYC = false
+          });
+        }
+        this.userTokensale = response.data;
+        this.loadingTokensale = false
+        this.loadingKYC = false
+      } catch (error) {
+        this.handleError(error)
+        this.loadingTokensale = false
+      }
     },
     async telegramLogin (user) {
       console.log(user)
@@ -118,17 +167,7 @@ export default {
         const response = await this.$axios.post('/user/telegram', user)
         this.user = response.data;
       } catch (error) {
-        if (error.response && error.response.data) {
-          if (error.response.data.error) {
-            this.error = error.response.data.error
-          } else {
-            this.error = error.response.data
-          }
-        } else if (error.message) {
-          this.error = error.message
-        } else {
-          this.error = error
-        }
+        this.handleError(error)
       }
       this.loading = false
     },
@@ -144,17 +183,7 @@ export default {
         })
         this.user = response.data;
       } catch (error) {
-        if (error.response && error.response.data) {
-          if (error.response.data.error) {
-            this.error = error.response.data.error
-          } else {
-            this.error = error.response.data
-          }
-        } else if (error.message) {
-          this.error = error.message
-        } else {
-          this.error = error
-        }
+        this.handleError(error)
       }
       this.editEmail = false
       this.loading = false
@@ -165,17 +194,7 @@ export default {
         const response = await this.$axios.get('/user')
         this.user = response.data;
       } catch (error) {
-        if (error.response && error.response.data) {
-          if (error.response.data.error) {
-            this.error = error.response.data.error
-          } else {
-            this.error = error.response.data
-          }
-        } else if (error.message) {
-          this.error = error.message
-        } else {
-          this.error = error
-        }
+        this.handleError(error)
       }
       this.loading = false
     },
@@ -184,17 +203,7 @@ export default {
         const response = await this.$axios.get('/user/referrals')
         this.referrals = parseInt(response.data)
       } catch (error) {
-        if (error.response && error.response.data) {
-          if (error.response.data.error) {
-            this.error = error.response.data.error
-          } else {
-            this.error = error.response.data
-          }
-        } else if (error.message) {
-          this.error = error.message
-        } else {
-          this.error = error
-        }
+        this.handleError(error)
       }
     },
     async getTasks () {
@@ -202,17 +211,22 @@ export default {
         const response = await this.$axios.get('/tasks')
         this.tasks = response.data
       } catch (error) {
-        if (error.response && error.response.data) {
-          if (error.response.data.error) {
-            this.error = error.response.data.error
-          } else {
-            this.error = error.response.data
-          }
-        } else if (error.message) {
-          this.error = error.message
+        this.handleError(error)
+      }
+    },
+    handleError (error) {
+      if (error.response && error.response.data) {
+        if (error.response.data.error) {
+          this.error = error.response.data.error
+        } else if (error.response.data.message) {
+          this.error = error.response.data.message
         } else {
-          this.error = error
+          this.error = error.response.data
         }
+      } else if (error.message) {
+        this.error = error.message
+      } else {
+        this.error = error
       }
     }
   }

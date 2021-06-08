@@ -16,6 +16,7 @@
     "@nuxtjs/google-adsense": "^1.3.0",
     "@nuxtjs/google-analytics": "^2.4.0",
     "@nuxtjs/google-gtag": "^1.0.4",
+    "@synaps-io/synaps-client-sdk-js": "^2.0.3",
     "@typeform/embed": "^0.16.0",
     "@walletconnect/client": "^1.4.1",
     "@walletconnect/qrcode-modal": "^1.4.1",
