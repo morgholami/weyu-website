@@ -142,7 +142,7 @@ export default {
         if(this.$route.query.redirect) {
           this.$router.push(this.$route.query.redirect)
         } else {
-          this.$router.push("/account")
+          this.$router.push("/account-new")
         }
       } catch (error) {
         console.error("ERR", error);
