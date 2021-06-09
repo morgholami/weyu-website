@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import tokenContract from "./ERC-20.json";
+
 /**
  * When using the walletconnect protocol we need to make sure to use the custom requests.
  * https://docs.binance.org/walletconnect.html
@@ -326,6 +328,14 @@ export default (context, inject) => {
 
         this.addChain()
 
+      },
+
+      async getBalanceOfAddress(address) {
+        const contract = new web3.eth.Contract(tokenContract, process.env.NUXT_ENV_USDT_TOKEN_ADDRESS)
+        const balance = await contract.methods.balanceOf(address).call()
+        if (balance) {
+          return web3.utils.fromWei(balance.toString())
+        }
       }
     }
   })

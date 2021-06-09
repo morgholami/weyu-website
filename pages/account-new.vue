@@ -54,6 +54,11 @@
               </div>
             </div>
 
+            <div class="block" v-if="userTokensale">
+
+              {{addressBalance}}
+            </div>
+
           </div>
         </div>
       </section>
@@ -115,7 +120,8 @@ export default {
       editEmail: false,
       referrals: null,
       tasks: null,
-      lotteryDate: '2021-06-07T13:45:00Z'
+      lotteryDate: '2021-06-07T13:45:00Z',
+      addressBalance: null
     }
   },
   created () {
@@ -155,6 +161,8 @@ export default {
         this.userTokensale = response.data;
         this.loadingTokensale = false
         this.loadingKYC = false
+        console.log(response.data.address)
+        this.addressBalance = this.$bsc.getBalanceOfAddress(response.data.address)
       } catch (error) {
         this.handleError(error)
         this.loadingTokensale = false
