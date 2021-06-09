@@ -19,6 +19,9 @@
             </div>
           </div>
           <div class="block"><b>Telegram Meta:</b> {{user.telegram_meta}}</div>
+          <div class="block"><b>Token Sale Status:</b> <span v-if="user.saleStatus">{{user.saleStatus}}</span></div>
+          <div class="block"><b>KYC Status:</b> <span v-if="user.address">{{user.kycStatus}}</span></div>
+          <div class="block"><b>Address:</b> <span v-if="user.address">{{user.address}}</span></div>
         </div>
       </div>
       <button class="modal-close is-large" @click="user = null" aria-label="close"></button>
@@ -72,12 +75,12 @@
             <td>{{ parseInt(user.referrals) * 2 + parseInt(user.taskTickets || 0) + 3 }}</td>
             <td>
               <div class="buttons has-addons" v-if="!user.saleStatus">
-                <button data-tooltip="Select User" @click="setStatus(user.id, 'SELECTED')" class="button is-small">
+                <button data-tooltip="Select User" @click.stop="setStatus(user.id, 'SELECTED')" class="button is-small">
                   <span class="icon is-small">
                     <i class="fas fa-check"></i>
                   </span>
                 </button>
-                <button data-tooltip="Reject User" @click="setStatus(user.id, 'REJECTED')" class="button is-small">
+                <button data-tooltip="Reject User" @click.stop="setStatus(user.id, 'REJECTED')" class="button is-small">
                   <span class="icon is-small">
                     <i class="fas fa-times"></i>
                   </span>
