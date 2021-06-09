@@ -54,6 +54,7 @@
             <th>Referral Code</th>
             <th>Created</th>
             <th>Tickets</th>
+            <th>Select/Reject User</th>
           </tr>
           </thead>
           <tbody>
@@ -69,6 +70,23 @@
             <td><a @click.prevent.stop="search = user.referral_code">{{ user.referral_code }}</a></td>
             <td>{{ user.created_at }}</td>
             <td>{{ parseInt(user.referrals) * 2 + parseInt(user.taskTickets || 0) + 3 }}</td>
+            <td>
+              <div class="buttons has-addons" v-if="!user.saleStatus">
+                <button data-tooltip="Select User" @click="setStatus(user.id, 'SELECTED')" class="button is-small">
+                  <span class="icon is-small">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </button>
+                <button data-tooltip="Reject User" @click="setStatus(user.id, 'REJECTED')" class="button is-small">
+                  <span class="icon is-small">
+                    <i class="fas fa-times"></i>
+                  </span>
+                </button>
+              </div>
+              <div v-else>
+                {{user.saleStatus}}
+              </div>
+            </td>
           </tr>
 
           </tbody>
@@ -226,7 +244,28 @@ export default {
       }
       this.loading = false
     },
-
+    async setStatus (id, status) {
+      this.loading = true
+      try {
+        await this.$axios.post(`/admin/user/${id}/select`, {
+          status: status
+        })
+        this.users.find(x => x.id === id).saleStatus = status;
+      } catch (error) {
+        if (error.response && error.response.data) {
+          if (error.response.data.error) {
+            this.error = error.response.data.error
+          } else {
+            this.error = error.response.data
+          }
+        } else if (error.message) {
+          this.error = error.message
+        } else {
+          this.error = error
+        }
+      }
+      this.loading = false
+    }
   }
 }
 </script>
