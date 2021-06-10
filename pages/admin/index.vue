@@ -20,8 +20,8 @@
           </div>
           <div class="block"><b>Telegram Meta:</b> {{user.telegram_meta}}</div>
           <div class="block"><b>Token Sale Status:</b> <span v-if="user.saleStatus">{{user.saleStatus}}</span></div>
-          <div class="block"><b>KYC Status:</b> <span v-if="user.address">{{user.kycStatus}}</span></div>
-          <div class="block"><b>Address:</b> <span v-if="user.address">{{user.address}}</span></div>
+          <div class="block"><b>KYC Status:</b> <span v-if="user.kycStatus">{{user.kycStatus}}</span></div>
+          <div class="block"><b>Token Sale Address:</b> <span v-if="user.tokenSaleAddress">{{user.tokenSaleAddress}}</span></div>
         </div>
       </div>
       <button class="modal-close is-large" @click="user = null" aria-label="close"></button>
@@ -88,7 +88,7 @@
               </div>
               <div v-else>
                 {{user.saleStatus}}
-                <span class="icon is-small" @click.stop="setUserSaleStatus(user.id, 'RESET')">
+                <span style="cursor:pointer;" class="icon is-small" @click.stop="setUserSaleStatus(user.id, 'RESET')">
                   <i class="fas fa-times"></i>
                 </span>
               </div>

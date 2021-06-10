@@ -54,9 +54,13 @@
               </div>
             </div>
 
-            <div class="block" v-if="userTokensale">
-
-              {{addressBalance}}
+            <div class="block" v-if="userTokensale && addressBalance">
+              <p>
+                {{userTokensale.address}}<br>
+                USDT Balance: ${{addressBalance.usd}}<br>
+                Equals<br>
+                {{addressBalance.weyu}} WEYU Tokens
+              </p>
             </div>
 
           </div>
@@ -162,7 +166,8 @@ export default {
         this.loadingTokensale = false
         this.loadingKYC = false
         console.log(response.data.address)
-        this.addressBalance = this.$bsc.getBalanceOfAddress(response.data.address)
+        this.addressBalance = await this.$bsc.getBalanceOfAddress(response.data.address)
+        console.log('addressbalance', this.addressBalance)
       } catch (error) {
         this.handleError(error)
         this.loadingTokensale = false
