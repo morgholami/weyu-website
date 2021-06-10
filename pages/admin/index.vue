@@ -44,6 +44,19 @@
           </div>
         </div>
       </form>
+
+      <div class="field has-addons">
+        <div class="control">
+          <div class="select">
+            <select v-model="filter" @change="page = 1; getUsers()">
+              <option value="">-</option>
+              <option value="SELECTED">Selected</option>
+              <option value="REJECTED">Rejected</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
       <div v-if="loading" class="has-text-centered subtitle"><progress class="progress is-small is-primary" max="100">Loading</progress></div>
       <div class="table-container">
         <table class="table is-fullwidth is-striped is-hoverable">
@@ -170,7 +183,8 @@ export default {
       users: null,
       user: null,
       page: 1,
-      search: ''
+      search: '',
+      filter: ''
     }
   },
   watch: {
@@ -232,7 +246,7 @@ export default {
     async getUsers () {
       this.loading = true
       try {
-        const response = await this.$axios.get(`/admin/users?page=${this.page}&q=${this.search}`)
+        const response = await this.$axios.get(`/admin/users?page=${this.page}&q=${this.search}&f=${this.filter}`)
         this.users = response.data.users
         this.userCount = response.data.count
       } catch (error) {
