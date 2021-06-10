@@ -33,7 +33,7 @@
               <countdown :end-time="new Date(lotteryDate)" v-if="new Date(lotteryDate) > new Date()">
                 <span
                   slot="process"
-                  slot-scope="{ timeObj }"><h2 class="subtitle">{{ `Drawing in: ${timeObj.h}:${timeObj.m}:${timeObj.s}` }}</h2></span>
+                  slot-scope="{ timeObj }"><h2 class="subtitle">{{ `Drawing in: ${timeObj.d}:${timeObj.h}:${timeObj.m}:${timeObj.s}` }}</h2></span>
                 <span slot="finish"><a v-if="!userTokensale" @click="getUserTokensale" class="button">Check if you have won!</a></span>
               </countdown>
             </client-only>
@@ -45,12 +45,15 @@
               <h2 class="subtitle">
                 You are selected to participate in the WEYU Tokensale!
               </h2>
-              <button v-show="userTokensale && userTokensale.kyc_status !== 'VERIFIED'" @click="loadingKYC = true" :disabled="loadingKYC" class="synaps-verify-btn-blue" id="synaps-btn">
+              <button v-show="userTokensale && userTokensale.kyc_status !== 'VALIDATED'" @click="loadingKYC = true" :disabled="loadingKYC" class="synaps-verify-btn-blue" id="synaps-btn">
                 <template v-if="loadingKYC">Loading..</template><template v-else>Verify with Synaps</template>
               </button>
 
               <div>
                 KYC Status: <span v-if="userTokensale && !loadingTokensale">{{userTokensale.kyc_status}}</span><span v-if="loadingTokensale">Loading..</span>
+              </div>
+              <div class="blockchain-address" v-if="userTokensale && userTokensale.address">
+                {{userTokensale.address}}
               </div>
             </div>
 
@@ -124,7 +127,7 @@ export default {
       editEmail: false,
       referrals: null,
       tasks: null,
-      lotteryDate: '2021-06-07T13:45:00Z',
+      lotteryDate: '2021-06-09T11:41:00Z',
       addressBalance: null
     }
   },
