@@ -74,13 +74,13 @@
             <td>{{ user.created_at }}</td>
             <td>{{ parseInt(user.referrals) * 2 + parseInt(user.taskTickets || 0) + 3 }}</td>
             <td>
-              <div class="buttons has-addons" v-if="!user.saleStatus">
-                <button data-tooltip="Select User" @click.stop="setStatus(user.id, 'SELECTED')" class="button is-small">
+              <div class="buttons has-addons" v-if="!user.saleStatus || user.saleStatus == 'RESET'">
+                <button data-tooltip="Select User" @click.stop="setUserSaleStatus(user.id, 'SELECTED')" class="button is-small">
                   <span class="icon is-small">
                     <i class="fas fa-check"></i>
                   </span>
                 </button>
-                <button data-tooltip="Reject User" @click.stop="setStatus(user.id, 'REJECTED')" class="button is-small">
+                <button data-tooltip="Reject User" @click.stop="setUserSaleStatus(user.id, 'REJECTED')" class="button is-small">
                   <span class="icon is-small">
                     <i class="fas fa-times"></i>
                   </span>
@@ -88,6 +88,9 @@
               </div>
               <div v-else>
                 {{user.saleStatus}}
+                <span class="icon is-small" @click.stop="setUserSaleStatus(user.id, 'RESET')">
+                  <i class="fas fa-times"></i>
+                </span>
               </div>
             </td>
           </tr>
@@ -247,10 +250,10 @@ export default {
       }
       this.loading = false
     },
-    async setStatus (id, status) {
+    async setUserSaleStatus (id, status) {
       this.loading = true
       try {
-        await this.$axios.post(`/admin/user/${id}/select`, {
+        await this.$axios.post(`/admin/user/${id}/status`, {
           status: status
         })
         this.users.find(x => x.id === id).saleStatus = status;
