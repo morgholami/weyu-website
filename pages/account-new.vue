@@ -20,23 +20,28 @@
         <div class="container ">
           <div class="has-text-centered">
             <!-- Account Status Bar -->
-            <p class="has-text-white block">Congrats {{ user.telegram_meta.first_name }}, you are registered!</p>
+            <!-- <p class="has-text-white block">Congrats {{ user.telegram_meta.first_name }}, you are registered!</p> -->
             <p class="is-size-6 has-text-white">You have</p>
-            <div class="tickets">
+            <div class="tickets mt-1 mb-5">
               <div class="is-size-4 has-text-weight-bold">{{ tickets }}</div>
               <div style="margin-top: -8px;padding-bottom:3px" class="">Tickets</div>
             </div>
             <account-status :user="user"/>
-            <h2 class="title is-1 has-text-weight-medium is-spaced mt-6">WEYU Private Sale Lottery</h2>
+            <h2 class="title is-1 has-text-weight-normal is-spaced mt-6 pt-5">
+              <span v-if="new Date(lotteryDate) > new Date()">Lottery winners<br> anounced in</span>
+              <span v-else>WEYU Private Sale Lottery</span>
+            </h2>
 
-            <client-only>
-              <countdown :end-time="new Date(lotteryDate)" v-if="new Date(lotteryDate) > new Date()">
-                <span
-                  slot="process"
-                  slot-scope="{ timeObj }"><h2 class="subtitle">{{ `Drawing in: ${timeObj.d}:${timeObj.h}:${timeObj.m}:${timeObj.s}` }}</h2></span>
-                <span slot="finish"><a v-if="!userTokensale" @click="getUserTokensale" class="button">Check if you have won!</a></span>
-              </countdown>
-            </client-only>
+            <div class="countdown mt-5 px-6 py-6  has-radius is-horizontal-centered">
+              <client-only>
+                <countdown :end-time="new Date(lotteryDate)" v-if="new Date(lotteryDate) > new Date()">
+                  <span
+                    slot="process"
+                    slot-scope="{ timeObj }"><h2 class="title py-1 has-text-weight-medium countdown-title">{{ `${timeObj.d}:${timeObj.h}:${timeObj.m}:${timeObj.s}` }}</h2></span>
+                  <span slot="finish"><a v-if="!userTokensale" @click="getUserTokensale" class="button">Check if you have won!</a></span>
+                </countdown>
+              </client-only>
+            </div>
 
             <h2 class="subtitle has-text-danger" v-if="userTokensale && ['NOT_SELECTED', 'REJECTED'].includes(userTokensale.status)">
               Unfortunately, you were not selected.
@@ -72,8 +77,8 @@
     </div>
 
     <div class="has-text-centered container">
-      <div class="has-text-centered mb-4">
-        <a class="button is-outlined is-primary is-small" style="border-radius: 6px" @click="$bsc.logout()">
+      <div class="has-text-centered mb-6">
+        <a class="button is-outlined is-primary is-small mb-6" style="border-radius: 6px" @click="$bsc.logout()">
           Logout
         </a>
       </div>
@@ -127,7 +132,7 @@ export default {
       editEmail: false,
       referrals: null,
       tasks: null,
-      lotteryDate: '2021-06-09T11:41:00Z',
+      lotteryDate: '2021-07-12T11:41:00Z',
       addressBalance: null
     }
   },
@@ -315,6 +320,29 @@ export default {
     height: 40px;
     font-size: 14px;
     min-width: 150px;
+  }
+}
+
+.countdown {
+  width: fit-content;
+  box-shadow: 0px 0px 15px 1px $primary-gradient;
+  position: relative;
+  background: $gradient-bg;
+  &:before {
+    border-radius: 15px;
+    content: '';
+    background-image: linear-gradient(65deg, $primary 0%, $accent 100%);
+    top: -2px;
+    left: -2px;
+    bottom: -2px;
+    right: -2px;
+    position: absolute;
+    z-index:-1;
+  }
+
+  .countdown-title {
+    color: $primary;
+    font-size: 3.3rem;
   }
 }
 
