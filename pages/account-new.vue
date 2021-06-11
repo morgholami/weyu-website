@@ -360,5 +360,9 @@ export default {
     margin-top: 5px;
     text-align: center;
   }
+  .countdown .countdown-title {
+    color: $primary;
+    font-size: 2.8rem;
+  }
 }
 </style>
