@@ -27,12 +27,12 @@
               <div style="margin-top: -8px;padding-bottom:3px" class="">Tickets</div>
             </div>
             <account-status :user="user"/>
-            <h2 class="title is-1 has-text-weight-normal is-spaced mt-6 pt-5">
-              <span v-if="new Date(lotteryDate) > new Date()">Lottery winners<br> anounced in</span>
+            <h2 class="title is-1 has-text-weight-normal is-spaced mt-6 pt-5 has-limited-width is-horizontal-centered" style="width: 850px">
+              <span v-if="new Date(lotteryDate) > new Date()">Winners of the <b class="">WEYU</b> Private Sale Lottery announced in</span>
               <span v-else>WEYU Private Sale Lottery</span>
             </h2>
 
-            <div class="countdown mt-5 px-6 py-6 has-radius is-horizontal-centered" v-if="new Date(lotteryDate) > new Date()">
+            <div class="countdown mt-5 px-6 py-5 has-radius is-horizontal-centered" v-if="new Date(lotteryDate) > new Date()">
               <client-only>
                 <countdown :end-time="new Date(lotteryDate)">
                   <span
@@ -133,7 +133,7 @@ export default {
       editEmail: false,
       referrals: null,
       tasks: null,
-      lotteryDate: '2021-05-12T11:41:00Z',
+      lotteryDate: '2021-06-16T11:41:00Z',
       addressBalance: null,
       timer: null
     }
@@ -163,7 +163,7 @@ export default {
         if (!this.userTokensale && response.data.kyc_status !== 'VALIDATED') {
           if(!this.timer) {
             // every five minutes
-            this.timer = setInterval(() => this.getUserTokensale(), 5*60*1000); 
+            this.timer = setInterval(() => this.getUserTokensale(), 5*60*1000);
           }
           const Synaps = new SynapsClient(response.data.kyc_session_id, 'workflow');
           console.log("init synaps..")
@@ -337,11 +337,36 @@ export default {
   }
 }
 
+@keyframes glow {
+  0% {
+    box-shadow: 0px 0px 10px 0px $primary-gradient;
+  }
+  20% {
+    box-shadow: 0px 0px 50px 5px $primary-gradient;
+  }
+  45% {
+    box-shadow: 0px 0px 10px 0px $primary-gradient;
+  }
+  55% {
+    box-shadow: 0px 0px 10px 0px $secondary-gradient;
+  }
+  75% {
+    box-shadow: 0px 0px 50px 5px $secondary-gradient;
+  }
+  90% {
+    box-shadow: 0px 0px 10px 0px $secondary-gradient;
+  }
+  100% {
+    box-shadow: 0px 0px 10px 0px $primary-gradient;
+  }
+}
 .countdown {
+  animation: glow 6s infinite;
   width: fit-content;
   box-shadow: 0px 0px 15px 1px $primary-gradient;
   position: relative;
   background: $gradient-bg;
+  letter-spacing: 3px;
   &:before {
     border-radius: 15px;
     content: '';
