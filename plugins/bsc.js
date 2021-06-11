@@ -333,35 +333,32 @@ export default (context, inject) => {
       async getBalanceOfAddress(address) {
         let totalUsd;
         let maxUsd = process.env.NUXT_ENV_MAX_USD_VALUE;
-        try {
-          // get USDT on ETH
-          web3.setProvider(process.env.NUXT_ENV_ETH_RPC)
-          let contract = new web3.eth.Contract(tokenContract, process.env.NUXT_ENV_USDT_TOKEN_ADDRESS)
-          let balance = await contract.methods.balanceOf(address).call()
-          if (balance) {
-            totalUsd = web3.utils.fromWei(balance, 'mwei');
-            console.log('USDT', web3.utils.fromWei(balance, 'mwei'));
-          } else {
-            totalUsd = 0;
-          }
-
-          // get BUSD on BSC
-          web3.setProvider(process.env.NUXT_ENV_BSC_RPC)
-          let contractBsc = new web3.eth.Contract(tokenContract, process.env.NUXT_ENV_BUSD_TOKEN_ADDRESS)
-          let balanceBsc = await contractBsc.methods.balanceOf(address).call()
-          if (balanceBsc) {          
-            totalUsd += parseInt(web3.utils.fromWei(balanceBsc))
-            console.log('BUSD', web3.utils.fromWei(balanceBsc));
-          }
-
-          // if usd value is higher dan max, give it the max
-          totalUsd = totalUsd > maxUsd ? maxUsd : totalUsd;
-          let weyuTokens = totalUsd / process.env.NUXT_ENV_WEYU_TOKEN_PRICE;
-
-          return {usd: totalUsd, weyu: weyuTokens}
-        } catch (e) {
-          console.error(e)
+        
+        // get USDT on ETH
+        web3.setProvider(process.env.NUXT_ENV_ETH_RPC)
+        let contract = new web3.eth.Contract(tokenContract, process.env.NUXT_ENV_USDT_TOKEN_ADDRESS)
+        let balance = await contract.methods.balanceOf(address).call()
+        if (balance) {
+          totalUsd = parseInt(web3.utils.fromWei(balance, 'mwei'));
+          console.log('USDT', web3.utils.fromWei(balance, 'mwei'));
+        } else {
+          totalUsd = 0;
         }
+
+        // get BUSD on BSC
+        web3.setProvider(process.env.NUXT_ENV_BSC_RPC)
+        let contractBsc = new web3.eth.Contract(tokenContract, process.env.NUXT_ENV_BUSD_TOKEN_ADDRESS)
+        let balanceBsc = await contractBsc.methods.balanceOf(address).call()
+        if (balanceBsc) {
+          totalUsd += parseInt(web3.utils.fromWei(balanceBsc))
+          console.log('BUSD', web3.utils.fromWei(balanceBsc));
+        }
+
+        // if usd value is higher dan max, give it the max
+        totalUsd = totalUsd > maxUsd ? maxUsd : totalUsd;
+        let weyuTokens = totalUsd / process.env.NUXT_ENV_WEYU_TOKEN_PRICE;
+
+        return {usd: totalUsd, weyu: weyuTokens}
       }
     }
   })
