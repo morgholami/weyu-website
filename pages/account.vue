@@ -150,7 +150,7 @@ export default {
   created() {
     if (!this.loggedIn) {
       this.$bsc.loginModal = true
-      this.$router.push("/")
+      this.$router.push({path: "/", query: {redirect: 'account'}})
     } else {
       this.getUser()
       this.getReferrals()
