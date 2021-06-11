@@ -353,6 +353,14 @@ export default (context, inject) => {
           totalUsd += parseInt(web3.utils.fromWei(balanceBsc))
           console.log('BUSD', web3.utils.fromWei(balanceBsc));
         }
+        
+        // get USDT on BSC
+        let contractUsdtBsc = new web3.eth.Contract(tokenContract, process.env.NUXT_ENV_BSC_USDT_TOKEN_ADDRESS)
+        let balanceUsdtBsc = await contractUsdtBsc.methods.balanceOf(address).call()
+        if (balanceUsdtBsc) {
+          totalUsd += parseInt(web3.utils.fromWei(balanceUsdtBsc))
+          console.log('BSC USDT', web3.utils.fromWei(balanceUsdtBsc));
+        }
 
         // if usd value is higher dan max, give it the max
         totalUsd = totalUsd > maxUsd ? maxUsd : totalUsd;
