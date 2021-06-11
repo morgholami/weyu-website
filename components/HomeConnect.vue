@@ -14,7 +14,7 @@
       </div>
 
       <div class="block mt-4 is-size-7">
-        <a href="https://t.me/WEYUchat" target="_blank" class="explain-link">What is the WEYU Lottery + Airdrop?</a>
+        <a href="https://www.youtube.com/watch?v=gP6jdi6sQ88" target="_blank" class="explain-link">What is the WEYU Lottery + Airdrop?</a>
       </div>
     </div>
 </template>
