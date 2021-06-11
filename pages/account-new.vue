@@ -57,6 +57,15 @@
               </div>
             </div>
 
+            <div class="block" v-if="userTokensale && addressBalance">
+              <p>
+                {{userTokensale.address}}<br>
+                USDT Balance: ${{addressBalance.usd}}<br>
+                Equals<br>
+                {{addressBalance.weyu}} WEYU Tokens
+              </p>
+            </div>
+
           </div>
         </div>
       </section>
@@ -118,7 +127,8 @@ export default {
       editEmail: false,
       referrals: null,
       tasks: null,
-      lotteryDate: '2021-06-09T11:41:00Z'
+      lotteryDate: '2021-06-09T11:41:00Z',
+      addressBalance: null
     }
   },
   created () {
@@ -158,6 +168,9 @@ export default {
         this.userTokensale = response.data;
         this.loadingTokensale = false
         this.loadingKYC = false
+        console.log(response.data.address)
+        this.addressBalance = await this.$bsc.getBalanceOfAddress(response.data.address)
+        console.log('addressbalance', this.addressBalance)
       } catch (error) {
         this.handleError(error)
         this.loadingTokensale = false
