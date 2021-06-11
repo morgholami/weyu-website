@@ -3,7 +3,7 @@
     <error-modal/>
     <div v-if="loading" class="has-text-centered subtitle">Loading..</div>
     <div v-if="user">
-      <div class="container" v-if="!user.telegram_meta || !user.email">
+      <div class="container" v-if="!user.telegram || !user.email">
         <div class="has-text-centered">
           <div class="is-horizontal-centered column is-three-quarters">
             <!-- Register Block -->
@@ -20,7 +20,7 @@
         <div class="container ">
           <div class="has-text-centered">
             <!-- Account Status Bar -->
-            <p class="has-text-white block">Congrats {{ user.telegram_meta.first_name }}, you are registered!</p>
+            <p class="has-text-white block">Congrats <span v-if="user.telegram_meta">{{ user.telegram_meta.first_name }}</span>, you are registered!</p>
             <p class="is-size-6 has-text-white">You have</p>
             <div class="tickets">
               <div class="is-size-4 has-text-weight-bold">{{ tickets }}</div>
@@ -37,6 +37,7 @@
                 <span slot="finish"><a v-if="!userTokensale" @click="getUserTokensale" class="button">Check if you have won!</a></span>
               </countdown>
             </client-only>
+            <progress v-if="loadingTokensale" class="progress is-small is-primary" max="100">loading..</progress>
 
             <h2 class="subtitle has-text-danger" v-if="userTokensale && ['NOT_SELECTED', 'REJECTED'].includes(userTokensale.status)">
               Unfortunately, you were not selected.
@@ -57,12 +58,13 @@
               </div>
             </div>
 
-            <div class="block" v-if="userTokensale && addressBalance">
+            <div class="block" v-if="userTokensale && userTokensale.address">
               <p>
-                {{userTokensale.address}}<br>
-                USDT Balance: ${{addressBalance.usd}}<br>
-                Equals<br>
+                USDT Balance: <span v-if="addressBalance">${{addressBalance.usd}}
+                <br>Equals<br>
                 {{addressBalance.weyu}} WEYU Tokens
+                </span>
+                <span v-else>Loading..</span>
               </p>
             </div>
 
@@ -150,7 +152,7 @@ export default {
         this.loadingTokensale = true
         this.loadingKYC = true
         const response = await this.$axios.get('/user/tokensale')
-        if (!this.userTokensale && response.data.kyc_status !== 'VERIFIED') {
+        if (!this.userTokensale && response.data.kyc_status !== 'VALIDATED') {
           const Synaps = new SynapsClient(response.data.kyc_session_id, 'workflow');
           console.log("init synaps..")
           Synaps.init();
@@ -168,12 +170,17 @@ export default {
         this.userTokensale = response.data;
         this.loadingTokensale = false
         this.loadingKYC = false
-        console.log(response.data.address)
-        this.addressBalance = await this.$bsc.getBalanceOfAddress(response.data.address)
-        console.log('addressbalance', this.addressBalance)
+        if (response.data.address) {
+          this.addressBalance = await this.$bsc.getBalanceOfAddress(response.data.address)
+        }
       } catch (error) {
         this.handleError(error)
         this.loadingTokensale = false
+      }
+    },
+    async refreshBalance () {
+      if (this.userTokensale.address) {
+        this.addressBalance = await this.$bsc.getBalanceOfAddress(this.userTokensale.address)
       }
     },
     async telegramLogin (user) {
