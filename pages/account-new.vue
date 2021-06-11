@@ -32,9 +32,9 @@
               <span v-else>WEYU Private Sale Lottery</span>
             </h2>
 
-            <div class="countdown mt-5 px-6 py-6  has-radius is-horizontal-centered">
+            <div class="countdown mt-5 px-6 py-6 has-radius is-horizontal-centered" v-if="new Date(lotteryDate) > new Date()">
               <client-only>
-                <countdown :end-time="new Date(lotteryDate)" v-if="new Date(lotteryDate) > new Date()">
+                <countdown :end-time="new Date(lotteryDate)">
                   <span
                     slot="process"
                     slot-scope="{ timeObj }"><h2 class="title py-1 has-text-weight-medium countdown-title">{{ `${timeObj.d}:${timeObj.h}:${timeObj.m}:${timeObj.s}` }}</h2></span>
@@ -132,7 +132,7 @@ export default {
       editEmail: false,
       referrals: null,
       tasks: null,
-      lotteryDate: '2021-07-12T11:41:00Z',
+      lotteryDate: '2021-05-12T11:41:00Z',
       addressBalance: null
     }
   },

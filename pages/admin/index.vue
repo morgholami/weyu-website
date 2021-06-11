@@ -87,7 +87,7 @@
             <td>{{ user.created_at }}</td>
             <td>{{ parseInt(user.referrals) * 2 + parseInt(user.taskTickets || 0) + 3 }}</td>
             <td>
-              <div class="buttons has-addons" v-if="!user.saleStatus || user.saleStatus == 'RESET'">
+              <div class="buttons has-addons" v-if="!user.saleStatus">
                 <button data-tooltip="Select User" @click.stop="setUserSaleStatus(user.id, 'SELECTED')" class="button is-small">
                   <span class="icon is-small">
                     <i class="fas fa-check"></i>
@@ -101,7 +101,7 @@
               </div>
               <div v-else>
                 {{user.saleStatus}}
-                <span style="cursor:pointer;" class="icon is-small" @click.stop="setUserSaleStatus(user.id, 'RESET')">
+                <span style="cursor:pointer;" class="icon is-small" @click.stop="setUserSaleStatus(user.id, null)">
                   <i class="fas fa-times"></i>
                 </span>
               </div>

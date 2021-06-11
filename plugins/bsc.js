@@ -339,7 +339,8 @@ export default (context, inject) => {
           let contract = new web3.eth.Contract(tokenContract, process.env.NUXT_ENV_USDT_TOKEN_ADDRESS)
           let balance = await contract.methods.balanceOf(address).call()
           if (balance) {
-            totalUsd = (balance / 1000000);
+            totalUsd = web3.utils.fromWei(balance, 'mwei');
+            console.log('USDT', web3.utils.fromWei(balance, 'mwei'));
           } else {
             totalUsd = 0;
           }
