@@ -14,7 +14,7 @@
       </div>
 
       <div class="block mt-4 is-size-7">
-        <a href="https://weyu-io.medium.com/the-weyu-whitelist-airdrop-is-now-open-6a793c02302f" target="_blank" class="explain-link">What is the WEYU Lottery + Airdrop?</a>
+        <a href="https://t.me/WEYUchat" target="_blank" class="explain-link">What is the WEYU Lottery + Airdrop?</a>
       </div>
     </div>
 </template>
