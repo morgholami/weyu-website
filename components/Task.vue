@@ -38,7 +38,7 @@
             </div>
           </div>
           <div v-else-if="task.key === 'youtube3'">
-            <div>1. Like <a href="https://www.youtube.com/watch?v=M_vr6frJ9r8" target="_blank">this YouTube video</a></div>
+            <div>1. Watch & Like <a href="https://www.youtube.com/watch?v=qkw4YUNLzzo" target="_blank">this YouTube video</a></div>
             <div>2. Enter your YouTube username
               <input class="input" type="text" placeholder="Your YouTube username" v-model="answer" required>
             </div>

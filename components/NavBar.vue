@@ -42,11 +42,6 @@
             <div class="navbar-item is-disabled " exact-active-class="is-active">
               <div class="has-tooltip-bottom has-tooltip-arrow" data-tooltip="Coming Soon!">Sell NFTs</div>
             </div>
-            <div @click="mobileMenu = false" >
-              <a class="navbar-item" target="_blank" href="https://weyu-io.medium.com/the-weyu-whitelist-airdrop-is-now-open-6a793c02302f" exact-active-class="is-active">
-                <div>Whitelist & Airdrop</div>
-              </a>
-            </div>
             <div class="navbar-item" exact-active-class="is-active" @click="mobileMenu = false">
               <div v-if="!loggedIn">
                 <div class="button is-primary is-outlined px-5"  @click="$bsc.loginModal = true" exact-active-class="is-active">
