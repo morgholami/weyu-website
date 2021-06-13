@@ -19,6 +19,9 @@
             </div>
           </div>
           <div class="block"><b>Telegram Meta:</b> {{user.telegram_meta}}</div>
+          <div class="block"><b>Token Sale Status:</b> <span v-if="user.saleStatus">{{user.saleStatus}}</span></div>
+          <div class="block"><b>KYC Status:</b> <span v-if="user.kycStatus">{{user.kycStatus}}</span></div>
+          <div class="block"><b>Token Sale Address:</b> <span v-if="user.tokenSaleAddress">{{user.tokenSaleAddress}}</span></div>
         </div>
       </div>
       <button class="modal-close is-large" @click="user = null" aria-label="close"></button>
@@ -41,6 +44,19 @@
           </div>
         </div>
       </form>
+
+      <div class="field has-addons">
+        <div class="control">
+          <div class="select">
+            <select v-model="filter" @change="page = 1; getUsers()">
+              <option value="">-</option>
+              <option value="SELECTED">Selected</option>
+              <option value="REJECTED">Rejected</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      
       <div v-if="loading" class="has-text-centered subtitle"><progress class="progress is-small is-primary" max="100">Loading</progress></div>
       <div class="table-container">
         <table class="table is-fullwidth is-striped is-hoverable">
@@ -54,6 +70,7 @@
             <th>Referral Code</th>
             <th>Created</th>
             <th>Tickets</th>
+            <th>Select/Reject User</th>
           </tr>
           </thead>
           <tbody>
@@ -69,6 +86,26 @@
             <td><a @click.prevent.stop="search = user.referral_code">{{ user.referral_code }}</a></td>
             <td>{{ user.created_at }}</td>
             <td>{{ parseInt(user.referrals) * 2 + parseInt(user.taskTickets || 0) + 3 }}</td>
+            <td>
+              <div class="buttons has-addons" v-if="!user.saleStatus">
+                <button data-tooltip="Select User" @click.stop="setUserSaleStatus(user.id, 'SELECTED')" class="button is-small">
+                  <span class="icon is-small">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </button>
+                <button data-tooltip="Reject User" @click.stop="setUserSaleStatus(user.id, 'REJECTED')" class="button is-small">
+                  <span class="icon is-small">
+                    <i class="fas fa-times"></i>
+                  </span>
+                </button>
+              </div>
+              <div v-else>
+                {{user.saleStatus}}
+                <span style="cursor:pointer;" class="icon is-small" @click.stop="setUserSaleStatus(user.id, null)">
+                  <i class="fas fa-times"></i>
+                </span>
+              </div>
+            </td>
           </tr>
 
           </tbody>
@@ -146,7 +183,8 @@ export default {
       users: null,
       user: null,
       page: 1,
-      search: ''
+      search: '',
+      filter: ''
     }
   },
   watch: {
@@ -208,7 +246,7 @@ export default {
     async getUsers () {
       this.loading = true
       try {
-        const response = await this.$axios.get(`/admin/users?page=${this.page}&q=${this.search}`)
+        const response = await this.$axios.get(`/admin/users?page=${this.page}&q=${this.search}&f=${this.filter}`)
         this.users = response.data.users
         this.userCount = response.data.count
       } catch (error) {
@@ -226,7 +264,28 @@ export default {
       }
       this.loading = false
     },
-
+    async setUserSaleStatus (id, status) {
+      this.loading = true
+      try {
+        await this.$axios.post(`/admin/user/${id}/status`, {
+          status: status
+        })
+        this.users.find(x => x.id === id).saleStatus = status;
+      } catch (error) {
+        if (error.response && error.response.data) {
+          if (error.response.data.error) {
+            this.error = error.response.data.error
+          } else {
+            this.error = error.response.data
+          }
+        } else if (error.message) {
+          this.error = error.message
+        } else {
+          this.error = error
+        }
+      }
+      this.loading = false
+    }
   }
 }
 </script>
